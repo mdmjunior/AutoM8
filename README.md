@@ -1,2 +1,2 @@
 # AutoM8
-Bash stuff to automate Linux Server Install
+Bash script to automate Linux Workstation and Server Install
