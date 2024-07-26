@@ -13,6 +13,18 @@ check_env() {
     RELEASE=$(lsb_release -rs 2>/dev/null)
     USERNM=$(whoami)
 
+    echo "[ ----------------------------------------------------- ]"
+    echo " "
+    echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
+    echo "  ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
+    echo "  ███████║██║   ██║   ██║   ██║   ██║██╔████╔██║╚█████╔╝"
+    echo "  ██╔══██║██║   ██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██╗"
+    echo "  ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
+    echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
+    echo "[ ----------------------------------------------------- ]"
+    echo " Ubuntu Installation Tool "
+
+
     if [ "$DISTRO" != "Ubuntu" ]; then
         echo "Distribuição não suportada: $DISTRO"
         exit 1
@@ -23,20 +35,10 @@ check_env() {
         exit 1
     fi
 
-      # Atualiza os repositórios e o sistema operacional
-    if [ "$USERNM" == "root" ]; then
-        echo "Atualizando os repositórios e pacotes do SO"
-        apt update && apt upgrade -y
-    else
-        echo "Atualizando os repositórios e pacotes do SO"
-        echo "Seu usuário não é root, digite a senha para elevação"
-        sudo apt update && sudo apt upgrade -y
-    fi
-
     sleep 2
     clear
 
-    # Perguntar se vai instalar desktop ou server
+    # Perguntar se o usuário vai instalar um desktop ou server
     read -p "Você vai instalar um desktop ou server? (desktop/server): " INSTALL_TYPE
 
     if [ "$INSTALL_TYPE" == "desktop" ]; then
@@ -50,12 +52,24 @@ check_env() {
 }
 
 install_desktop() {
-    echo "Desktop Installation"
+    echo "Iniciando instalação otimizada para Desktop"
     echo "O script irá preparar o seu sistema operacional, aguarde..."
+    echo "Distro: $DISTRO"
+    echo "Release: $RELEASE"
+    echo "Usuario: $USERNM"
     sleep 1
     clear
 
-
+    # Atualiza os repositórios e o sistema operacional
+    if [ "$USERNM" == "root" ]; then
+        echo "Atualizando os repositórios e pacotes do SO"
+        apt update && apt upgrade -y
+    else
+        echo "Atualizando os repositórios e pacotes do SO"
+        echo "Seu usuário não é root, digite a senha para elevação"
+        sudo apt update && sudo apt upgrade -y
+    fi
+    
 }
 
 install_server() {
