@@ -62,13 +62,34 @@ install_desktop() {
 
     # Atualiza os repositórios e o sistema operacional
     if [ "$USERNM" == "root" ]; then
-        echo "Atualizando os repositórios e pacotes do SO"
-        apt update && apt upgrade -y
+        echo "Esse script deve ser executado com o seu usuario, $USERNM"
+        exit 1
     else
         echo "Atualizando os repositórios e pacotes do SO"
         echo "Seu usuário não é root, digite a senha para elevação"
         sudo apt update && sudo apt upgrade -y
+        echo "Atualização do sistema operacional finalizada!"
     fi
+
+    clear
+    echo "Instalando pacotes básicos"
+    sudo apt install -y ntpdate zfsutils-linux tcpdump vim nmap net-tools iptables iptables-persistent git curl wget links ruby python3 python3-pip build-essential openssl traceroute pkg-config gcc make iptraf netcat-traditional zsh iperf htop iotop
+    echo "Pacotes instalados."
+
+    clear
+    echo "Instalando ferramentas gráficas"
+    sudo apt install -y gnome-shell-extension-manager gnome-software gnome-software-plugin-flatpak flatpak ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-extensions gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    echo "Pacotes instalados"
+
+    clear
+    echo "Instalando utilitários e ferramentas de desktop"
+    sudo apt install -y rar unrar p7zip-full p7zip-rar tlp 
+    echo "Pacotes Instalados"
+
+    clear
+    echo "Instalando ferramentas de trabalho"
+    sudo apt install -y virtualbox ansible wireshark tshark gcc make tmux multitail timeshift openssh-server""
+    echo "Pacotes Instalados"
     
 }
 
