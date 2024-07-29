@@ -181,7 +181,17 @@ install_desktop() {
     sudo update-alternatives --set editor /usr/bin/vim
     echo "Criando Link para o Python"
     sudo ln -s /usr/bin/python3 /usr/bin/python
+    echo "Adicionando usuario ao grupo do vbox"
+    sudo usermod -aG vboxusers mmoreira 
 
+    sleep 1
+    clear
+    echo "instalando Stacer"
+    sudo nala install stacer
+    echo "Stacer instalado"
+
+    echo "Sistema pronto para uso"
+    exit
 }
 
 install_server() {
