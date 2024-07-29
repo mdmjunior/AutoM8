@@ -61,6 +61,7 @@ install_desktop() {
     clear
 
     # Atualiza os repositórios e o sistema operacional
+    
     if [ "$USERNM" == "root" ]; then
         echo "Esse script deve ser executado com o seu usuario, $USERNM"
         exit 1
@@ -70,34 +71,116 @@ install_desktop() {
         sudo apt update && sudo apt upgrade -y
         echo "Atualização do sistema operacional finalizada!"
     fi
+
+    echo "Adicionando repositórios extras"
+    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    sudo apt update
+    echo "Repositórios Instalados"
+
     sleep 1
     clear
     echo "Instalando pacotes básicos"
-    sudo apt install -y ntpdate zfsutils-linux tcpdump vim nmap net-tools iptables iptables-persistent git curl wget links ruby python3 python3-pip build-essential openssl traceroute pkg-config gcc make iptraf netcat-traditional zsh iperf htop iotop
+    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh
     echo "Pacotes instalados."
 
     sleep 1
     clear
-    echo "Instalando ferramentas gráficas"
-    sudo apt install -y gnome-shell-extension-manager gnome-software gnome-software-plugin-flatpak flatpak ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-extensions gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    echo "Instalando ferramentas de compactação de arquivos"
+    sudo apt install -y rar unrar p7zip-full p7zip-rar tlp bzip2 tar unzip
     echo "Pacotes instalados"
 
     sleep 1
     clear
-    echo "Instalando utilitários e ferramentas de desktop"
-    sudo apt install -y rar unrar p7zip-full p7zip-rar tlp 
+    echo "Instalando ferramentas para manipulaçao de filesystems"
+    sudo apt install -y zfsutils-linux samba-common-bin ntfs-3g
     echo "Pacotes Instalados"
 
     sleep 1
     clear
-    echo "Instalando ferramentas de trabalho"
-    sudo apt install -y virtualbox ansible wireshark tshark gcc make tmux multitail timeshift openssh-server""
+    echo "Instalando ferramentas de rede"
+    sudo apt install -y tcpdump nmap zenmap iptables iptables-persistent traceroute iptraf netcat-traditional wireshark tshark iperf
     echo "Pacotes Instalados"
+
+    sleep 1
+    clear
+    echo "Instalando ferramenta de backup"
+    sudo apt install -y timeshift
+    echo "Pacote Instalado"
+
+    sleep 1
+    clear
+    echo "Instalando add-ons do Gnome e fontes"
+    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-extensions gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    echo "Pacotes instalados"
+
+    sleep 1
+    clear
+    echo "Instalando gerenciadores de pacotes"
+    sudo apt install -y nala gnome-software-plugin-flatpak flatpak gdebi snapd
+    echo "Pacotes instalados"
+
+    sleep 1
+    clear
+    echo "Instalando ferramentas de virtualização"
+    sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms virtualbox-guest-utils virtualbox-guest-additions-iso
+    echo "Pacotes instalados"
+
+    sleep 1
+    clear
+    echo "Instalando ferramentas de desenvolvimento"
+    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip build-essential openssl pkg-config linux-headers-$(uname -r) linux-headers-generic libssl-dev
+    echo "Pacotes instalados"
+
+    sleep 1
+    clear
+    echo "Instalando ferramentas de automação"
+    sudo apt install -y ansible ansible-lint terraform packer vagrant
+    echo "Pacotes instalados"
+
+    sleep 1
+    clear
+    echo "Instalando Google Chrome"
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    dpkg -i google-chrome-stable_current_amd64.deb
+    echo "Pacote instalado"
+
+    # Instalação de pacotes via Snap
+
+    PACOTES_SNAP=(
+        code
+        drawio
+        firefox
+        gedit
+        go
+        joplin-desktop
+        journey
+        lxd
+        neofetch-desktop
+        smart-file-renamer
+        spotify
+        sublime-text
+        todoist
+        wonderwall
+        gnome-system-monitor
+        gnome-logs
+        cheese
+    )
+
+    for nome_do_programa in ${PACOTES_SNAP[@]}; do
+        if ! snap list | grep $nome_do_programa; then # Só instala se já não estiver instalado
+             sudo snap install "$nome_do_programa" -y
+        else
+            echo "[INSTALADO] - $nome_do_programa"
+        fi
+    done
 
     sleep 1
     clear
     echo "Atualizando editor de texto"
-    update-alternatives --config-editor
+    sudo update-alternatives --set editor /usr/bin/vim
+    echo "Criando Link para o Python"
+    sudo ln -s /usr/bin/python3 /usr/bin/python
 
 }
 
