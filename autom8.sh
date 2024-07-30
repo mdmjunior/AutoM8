@@ -111,7 +111,7 @@ install_desktop() {
 
     sleep 1
     echo "Instalando addons do Gnome e fontes"
-    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-extensions gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
     echo "Pacotes instalados"
 
     sleep 1
@@ -132,7 +132,7 @@ install_desktop() {
     sleep 1
     echo "Instalando Google Chrome"
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    dpkg -i google-chrome-stable_current_amd64.deb
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
     echo "Pacote instalado"
 
     # Instalação de pacotes via Snap
@@ -142,7 +142,7 @@ install_desktop() {
     sudo snap install firefox
     sudo snap install gedit
     sudo snap install go
-    sudo snap install jpplin-desktop
+    sudo snap install joplin-desktop
     sudo snap install journey
     sudo snap install lxd
     sudo snap install neofetch-desktop
