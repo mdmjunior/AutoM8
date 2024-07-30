@@ -39,7 +39,8 @@ check_env() {
     clear
 
     # Perguntar se o usuário vai instalar um desktop ou server
-    read -p "Você vai instalar um desktop ou server? (desktop/server): " INSTALL_TYPE
+    echo "Você vai instalar um desktop ou server? (desktop/server): "
+    read -r INSTALL_TYPE
 
     if [ "$INSTALL_TYPE" == "desktop" ]; then
         install_desktop
@@ -130,7 +131,7 @@ install_desktop() {
     sleep 1
     clear
     echo "Instalando ferramentas de desenvolvimento"
-    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip build-essential openssl pkg-config linux-headers-$(uname -r) linux-headers-generic libssl-dev
+    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip build-essential openssl pkg-config linux-headers-"$(uname -r)" linux-headers-generic libssl-dev
     echo "Pacotes instalados"
 
     sleep 1
