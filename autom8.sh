@@ -148,6 +148,7 @@ install_desktop() {
     echo "Pacote instalado"
 
     # Instalação de pacotes via Snap
+    echo "Instalação de softwares via Snap"
     sudo snap install code
     sudo snap install drawio
     sudo snap install firefox
@@ -165,6 +166,7 @@ install_desktop() {
     sudo snap install gnome-logs
     sudo snap install todoist
     sudo snap install cheese
+    echo "Pacotes instalados"
 
     sleep 1
     clear
