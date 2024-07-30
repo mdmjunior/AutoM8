@@ -72,6 +72,7 @@ install_desktop() {
         echo "Atualização do sistema operacional finalizada!"
     fi
 
+    sudo systemctl daemon-reload
     sleep 1
     echo "INSTALANDO PACOTES BÁSICOS"
     sudo apt install -y ntpdate vim net-tools iproute2 curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor
@@ -171,7 +172,8 @@ install_desktop() {
 
     sleep 1
     echo "ATUALIZANDO EDITOR DE TEXTO"
-    sudo update-alternatives --set editor /usr/bin/vim-tiny
+    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 1
+    sudo update-alternatives --set editor /usr/bin/vim.basic
     echo "CRIANDO LINK PARA O PYTHON"
     sudo ln -s /usr/bin/python3 /usr/bin/python
     echo "ADICIONANDO USUARIO AO GRUPO DO VBOX"
