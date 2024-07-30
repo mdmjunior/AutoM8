@@ -74,7 +74,7 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO PACOTES BÁSICOS"
-    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf
+    sudo apt install -y ntpdate vim net-tools iproute2 curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor
     echo "Pacotes instalados."
 
     sleep 1
@@ -82,9 +82,6 @@ install_desktop() {
     echo "INSTALANDO REPOSITORIO HASHICORP"
     wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-    echo "INSTALANDO REPOSITORIO TOR"
-    wget -O- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | sudo gpg --dearmor -o /usr/share/keyrings/deb.torproject.org-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/tor.list
     sudo apt update
     echo "Repositórios Instalados"
 
@@ -98,18 +95,18 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE COMPACTAÇÃO DE ARQUIVOS"
-    sudo apt install -y rar unrar p7zip-full p7zip-rar tlp tlp-rdw bzip2 tar unzip
+    sudo apt install -y rar unrar p7zip-full p7zip-rar tlp tlp-rdw bzip2 tar unzip smartmontools linux-tools-generic 7zip-standalone
     sudo systemctl enable tlp
     echo "Pacotes instalados"
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS PARA MANIPULAÇAO DE FILESYSTEMS"
-    sudo apt install -y zfsutils-linux samba-common-bin ntfs-3g libfuse2
+    sudo apt install -y zfsutils-linux samba-common-bin ntfs-3g libfuse2t64
     echo "Pacotes Instalados"
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE REDE"
-    sudo apt install -y tcpdump nmap zenmap iptables iptables-persistent traceroute iptraf netcat-traditional wireshark tshark iperf
+    sudo apt install -y tcpdump nmap zenmap iptables iptables-persistent traceroute iptraf-ng netcat-traditional wireshark tshark iperf geoipupdate geoip-database
     echo "Pacotes Instalados"
 
     sleep 1
@@ -123,12 +120,12 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO ADDONS DO GNOME E FONTES"
-    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
     echo "Pacotes instalados"
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE VIRTUALIZAÇÃO"
-    sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms virtualbox-guest-utils virtualbox-guest-additions-iso
+    sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms virtualbox-guest-utils virtualbox-guest-additions-iso virtualbox-guest-x11
     echo "Pacotes instalados"
 
     sleep 1
@@ -151,7 +148,6 @@ install_desktop() {
     echo "INSTALAÇÃO DE SOFTWARES VIA SNAP"
     sudo snap install code --classic
     sudo snap install drawio
-    sudo snap install firefox
     sudo snap install gedit
     sudo snap install go --classic
     sudo snap install joplin-desktop
@@ -175,7 +171,7 @@ install_desktop() {
 
     sleep 1
     echo "ATUALIZANDO EDITOR DE TEXTO"
-    sudo update-alternatives --set editor /usr/bin/vim
+    sudo update-alternatives --set editor /usr/bin/vim-tiny
     echo "CRIANDO LINK PARA O PYTHON"
     sudo ln -s /usr/bin/python3 /usr/bin/python
     echo "ADICIONANDO USUARIO AO GRUPO DO VBOX"
@@ -188,6 +184,7 @@ install_desktop() {
     sudo apt remove -y --purge apport apport-gtk rhythmbox
     sudo apt autoremove -y
     sudo apt autoclean -y
+    sudo systemctl daemon-reload
 
 
     echo "SISTEMA PRONTO PARA USO"
