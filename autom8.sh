@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ########################################################
-# AutoM8 - Ubuntu Install Automation Tool              #
+# AutoM8 - Ubuntu Post-Install Automation Tool         #
 # Author: Marcio Moreira junior                        #
 ########################################################
 
@@ -22,7 +22,7 @@ check_env() {
     echo "  ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
     echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
     echo "[ ----------------------------------------------------- ]"
-    echo " Ubuntu Installation Tool "
+    echo " Ubuntu Post-Installation Tool "
 
 
     if [ "$DISTRO" != "Ubuntu" ]; then
@@ -61,7 +61,7 @@ install_desktop() {
     clear
 
     # Atualiza os repositórios e o sistema operacional
-    
+
     if [ "$USERNM" == "root" ]; then
         echo "Esse script deve ser executado com o seu usuario, $USERNM"
         exit 1
@@ -81,8 +81,14 @@ install_desktop() {
     sleep 1
     clear
     echo "Instalando pacotes básicos"
-    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh
+    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect
     echo "Pacotes instalados."
+
+    sleep 1
+    clear
+    echo "Instalando gerenciadores de pacotes"
+    sudo apt install -y nala gnome-software-plugin-flatpak flatpak gdebi snapd
+    echo "Pacotes instalados"
 
     sleep 1
     clear
@@ -110,14 +116,8 @@ install_desktop() {
 
     sleep 1
     clear
-    echo "Instalando add-ons do Gnome e fontes"
+    echo "Instalando addons do Gnome e fontes"
     sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-extensions gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
-    echo "Pacotes instalados"
-
-    sleep 1
-    clear
-    echo "Instalando gerenciadores de pacotes"
-    sudo apt install -y nala gnome-software-plugin-flatpak flatpak gdebi snapd
     echo "Pacotes instalados"
 
     sleep 1
@@ -146,34 +146,23 @@ install_desktop() {
     echo "Pacote instalado"
 
     # Instalação de pacotes via Snap
-
-    PACOTES_SNAP=(
-        code
-        drawio
-        firefox
-        gedit
-        go
-        joplin-desktop
-        journey
-        lxd
-        neofetch-desktop
-        smart-file-renamer
-        spotify
-        sublime-text
-        todoist
-        wonderwall
-        gnome-system-monitor
-        gnome-logs
-        cheese
-    )
-
-    for nome_do_programa in ${PACOTES_SNAP[@]}; do
-        if ! snap list | grep $nome_do_programa; then # Só instala se já não estiver instalado
-             sudo snap install "$nome_do_programa" -y
-        else
-            echo "[INSTALADO] - $nome_do_programa"
-        fi
-    done
+    sudo snap install code
+    sudo snap install drawio
+    sudo snap install firefox
+    sudo snap install gedit
+    sudo snap install go
+    sudo snap install jpplin-desktop
+    sudo snap install journey
+    sudo snap install lxd
+    sudo snap install neofetch-desktop
+    sudo snap install smart-file-renamer
+    sudo snap install spotify
+    sudo snap install sublime-text
+    sudo snap install wonderwall
+    sudo snap install gnome-system-monitor
+    sudo snap install gnome-logs
+    sudo snap install todoist
+    sudo snap install cheese
 
     sleep 1
     clear
