@@ -72,17 +72,18 @@ install_desktop() {
         echo "Atualização do sistema operacional finalizada!"
     fi
 
+    sleep 1
+    clear
+    echo "Instalando pacotes básicos"
+    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg
+    echo "Pacotes instalados."
+
+    sleep 1
     echo "Adicionando repositórios extras"
     wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
     sudo apt update
     echo "Repositórios Instalados"
-
-    sleep 1
-    clear
-    echo "Instalando pacotes básicos"
-    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect
-    echo "Pacotes instalados."
 
     sleep 1
     clear
