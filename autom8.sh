@@ -74,7 +74,7 @@ install_desktop() {
 
     sleep 1
     echo "Instalando pacotes básicos"
-    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg
+    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf
     echo "Pacotes instalados."
 
     sleep 1
@@ -137,18 +137,18 @@ install_desktop() {
 
     # Instalação de pacotes via Snap
     echo "Instalação de softwares via Snap"
-    sudo snap install code
+    sudo snap install code --classic
     sudo snap install drawio
     sudo snap install firefox
     sudo snap install gedit
-    sudo snap install go
+    sudo snap install go --classic
     sudo snap install joplin-desktop
     sudo snap install journey
     sudo snap install lxd
     sudo snap install neofetch-desktop
     sudo snap install smart-file-renamer
     sudo snap install spotify
-    sudo snap install sublime-text
+    sudo snap install sublime-text --classic
     sudo snap install wonderwall
     sudo snap install gnome-system-monitor
     sudo snap install gnome-logs
@@ -166,7 +166,7 @@ install_desktop() {
 
     sleep 1
     echo "instalando Stacer"
-    sudo nala install stacer
+    sudo nala install -y stacer
     echo "Stacer instalado"
 
     echo "Sistema pronto para uso"
