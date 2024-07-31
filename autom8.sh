@@ -8,13 +8,14 @@
 ########################################################
 
 check_env() {
+
     # Verificar a distribuição e release
     DISTRO=$(lsb_release -is 2>/dev/null)
     RELEASE=$(lsb_release -rs 2>/dev/null)
     USERNM=$(whoami)
 
     echo "  [ -------------------------------------------------- ]"
-    echo " "
+    echo "                                                        "
     echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
     echo "  ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
     echo "  ███████║██║   ██║   ██║   ██║   ██║██╔████╔██║╚█████╔╝"
@@ -201,7 +202,7 @@ install_desktop() {
     echo "ATUALIZANDO EDITOR DE TEXTO"
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 1
     sudo update-alternatives --set editor /usr/bin/vim.basic
-    
+
     echo "CRIANDO LINK PARA O PYTHON"
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
