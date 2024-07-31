@@ -117,7 +117,7 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO FERRAMENTA DE BACKUP"
-    sudo apt install -y timeshift
+    sudo apt install -y timeshift extundelete
     echo "Pacote Instalado"
 
     sleep 1
