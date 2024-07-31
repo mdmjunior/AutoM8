@@ -131,7 +131,7 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE DESENVOLVIMENTO"
-    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip build-essential openssl pkg-config linux-headers-"$(uname -r)" linux-headers-generic libssl-dev
+    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip python3.12-venv build-essential openssl pkg-config linux-headers-"$(uname -r)" linux-headers-generic libssl-dev
     echo "Pacotes instalados"
 
     sleep 1
@@ -174,12 +174,23 @@ install_desktop() {
     echo "ATUALIZANDO EDITOR DE TEXTO"
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 1
     sudo update-alternatives --set editor /usr/bin/vim.basic
+    
     echo "CRIANDO LINK PARA O PYTHON"
     sudo ln -s /usr/bin/python3 /usr/bin/python
+
     echo "ADICIONANDO USUARIO AO GRUPO DO VBOX"
     sudo usermod -aG vboxusers mmoreira
+
     echo "HABILITANDO MINIMIZAR NO CLICK DO MOUSE"
     gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
+    echo "Configurando git para o usuário $USERNM"
+    echo "Digite o Nome completo do usuário $USERNM"
+    read -r GIT_REALNAME
+    echo "Digite o email do usuario $USERNM"
+    read -r GIT_EMAIL
+    git config --global user.name "$GIT_REALNAME"
+    git config --global user.email "$GIT_EMAIL"
 
     # Removendo pacotes não utilizados
     echo "REMOVENDO PACOTES DESNECESSÁRIOS"
@@ -187,6 +198,20 @@ install_desktop() {
     sudo apt autoremove -y
     sudo apt autoclean -y
     sudo systemctl daemon-reload
+
+    # Criando chave privada para o usuario
+    echo "Criando Chave privada para o usuário $USERNM"
+    ssh-keygen -t ed25519 -C "mdmjunior@gmail.com"
+    echo "Chave criada com sucesso"
+
+    # Adicionando usuário ao sudo sem senha
+    echo "Adicionando usuário ao sudoers"
+    echo "%mmoreira ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+
+    # Configurando SSH
+    echo "Configurando SSH Server para permitir login com chave"
+    sudo sed -i 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
+    sudo systemctl restart sshd
 
 
     echo "SISTEMA PRONTO PARA USO"
