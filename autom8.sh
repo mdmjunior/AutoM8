@@ -12,7 +12,7 @@ check_env() {
     DISTRO=$(lsb_release -is 2>/dev/null)
     RELEASE=$(lsb_release -rs 2>/dev/null)
     USERNM=$(whoami)
-   u
+
     echo "  [ -------------------------------------------------- ]"
     echo " "
     echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
