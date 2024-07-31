@@ -124,6 +124,34 @@ install_desktop() {
     sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-weather gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
     echo "Pacotes instalados"
 
+    sleep 1 
+    echo "Instalando Extensões do Gnome"
+    extensions=( https://extensions.gnome.org/extension/4269/alphabetical-app-grid/
+            https://extensions.gnome.org/extension/6682/astra-monitor/
+            https://extensions.gnome.org/extension/3193/blur-my-shell/
+            https://extensions.gnome.org/extension/517/caffeine/
+            https://extensions.gnome.org/extension/779/clipboard-indicator/
+            https://extensions.gnome.org/extension/2087/desktop-icons-ng-ding/
+            https://extensions.gnome.org/extension/1319/gsconnect/
+            https://extensions.gnome.org/extension/1301/ubuntu-appindicators/
+            https://extensions.gnome.org/extension/1300/ubuntu-dock/
+            https://extensions.gnome.org/extension/19/user-themes/
+            https://extensions.gnome.org/extension/21/workspace-indicator/ )
+
+    for i in "${extensions[@]}"
+    do
+        EXTENSION_ID=$(curl -s "$i" | grep -oP 'data-uuid="\K[^"]+')
+        VERSION_TAG=$(curl -Lfs "https://extensions.gnome.org/extension-query/?search=$EXTENSION_ID" | jq '.extensions[0] | .shell_version_map | map(.pk) | max')
+        wget -O "${EXTENSION_ID}".zip "https://extensions.gnome.org/download-extension/${EXTENSION_ID}.shell-extension.zip?version_tag=$VERSION_TAG"
+        gnome-extensions install --force "${EXTENSION_ID}".zip
+        if ! gnome-extensions list | grep --quiet "${EXTENSION_ID}"; then
+            busctl --user call org.gnome.Shell.Extensions /org/gnome/Shell/Extensions org.gnome.Shell.Extensions InstallRemoteExtension s "${EXTENSION_ID}"
+        fi
+        gnome-extensions enable "${EXTENSION_ID}"
+        rm "${EXTENSION_ID}".zip
+    done
+    echo "Extensões instaladas"
+
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE VIRTUALIZAÇÃO"
     sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms virtualbox-guest-utils virtualbox-guest-additions-iso virtualbox-guest-x11
@@ -131,7 +159,7 @@ install_desktop() {
 
     sleep 1
     echo "INSTALANDO FERRAMENTAS DE DESENVOLVIMENTO"
-    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip python3.12-venv build-essential openssl pkg-config linux-headers-"$(uname -r)" linux-headers-generic libssl-dev
+    sudo apt install -y apt-transport-https ca-certificates software-properties-common gcc make git ruby python3 python3-pip python3.12-venv build-essential libglib2.0-dev-bin openssl pkg-config linux-headers-"$(uname -r)" linux-headers-generic libssl-dev
     echo "Pacotes instalados"
 
     sleep 1
@@ -192,6 +220,10 @@ install_desktop() {
     git config --global user.name "$GIT_REALNAME"
     git config --global user.email "$GIT_EMAIL"
 
+    sleep 1
+    echo "Restaurando configurações do Gnome"
+    
+
     # Removendo pacotes não utilizados
     echo "REMOVENDO PACOTES DESNECESSÁRIOS"
     sudo apt remove -y --purge apport apport-gtk rhythmbox
@@ -211,6 +243,7 @@ install_desktop() {
     # Configurando SSH
     echo "Configurando SSH Server para permitir login com chave"
     sudo sed -i 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
+    echo "Reiniciando serviço SSHD"
     sudo systemctl restart sshd
 
 

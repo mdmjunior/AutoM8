@@ -1,0 +1,477 @@
+[apps/update-manager]
+first-run=false
+launch-count=3
+launch-time=int64 1722368105
+show-details=false
+window-height=400
+window-width=612
+
+[com/mattjakeman/ExtensionManager]
+is-maximized=true
+last-used-version='0.5.0'
+
+[com/ubuntu/update-notifier]
+release-check-time=uint32 1721310024
+
+[org/gnome/Snapshot]
+capture-mode='video'
+countdown=5
+is-maximized=true
+last-camera-id='C922 Pro Stream Webcam (V4L2)'
+window-height=640
+window-width=800
+
+[org/gnome/Totem]
+active-plugins=['mpris', 'rotation', 'open-directory', 'movie-properties', 'recent', 'variable-rate', 'save-file', 'autoload-subtitles', 'screenshot', 'vimeo', 'screensaver', 'apple-trailers', 'skipto']
+subtitle-encoding='UTF-8'
+
+[org/gnome/Weather]
+window-height=415
+window-maximized=false
+window-width=992
+
+[org/gnome/cheese]
+burst-delay=1000
+camera='C922 Pro Stream Webcam'
+photo-x-resolution=1920
+photo-y-resolution=1080
+video-x-resolution=1920
+video-y-resolution=1080
+
+[org/gnome/clocks]
+alarms=[{'name': <'worktime'>, 'id': <'c24a7e9027f288d57d5382346699368d'>, 'hour': <9>, 'minute': <0>, 'ring_time': <'2024-07-22T09:00:00-03'>, 'days': <[1, 2, 3, 4, 5]>, 'snooze_minutes': <10>, 'ring_minutes': <5>}]
+timers=@aa{sv} []
+world-clocks=[{'location': <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>}, {'location': <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>}, {'location': <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>}]
+
+[org/gnome/clocks/state/window]
+maximized=false
+panel-id='timer'
+size=(870, 690)
+
+[org/gnome/control-center]
+last-panel='bluetooth'
+window-state=(980, 640, true)
+
+[org/gnome/deja-dup]
+backend='google'
+prompt-check='2024-07-18T13:43:24.782185Z'
+
+[org/gnome/desktop/app-folders]
+folder-children=['Utilities', 'YaST', 'Pardus']
+
+[org/gnome/desktop/app-folders/folders/Pardus]
+categories=['X-Pardus-Apps']
+name='X-Pardus-Apps.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/mmoreira/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/0jepq4.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/Fuwafuwa_nanbatto_san_by_amaral-dark.png'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/datetime]
+automatic-timezone=false
+
+[org/gnome/desktop/input-sources]
+mru-sources=[('xkb', 'br'), ('xkb', 'us+intl')]
+per-window=false
+sources=[('xkb', 'br')]
+xkb-options=@as []
+
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+color-scheme='prefer-dark'
+enable-animations=true
+gtk-theme='Yaru-dark'
+icon-theme='Yaru'
+
+[org/gnome/desktop/notifications]
+application-children=['gnome-initial-setup', 'termius-app-termius-app', 'virtualbox', 'google-chrome', 'sublime-text-subl', 'cheese-cheese', 'org-gnome-characters', 'org-gnome-clocks', 'vlc', 'org-gimp-gimp']
+show-banners=false
+
+[org/gnome/desktop/notifications/application/cheese-cheese]
+application-id='cheese_cheese.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-initial-setup]
+application-id='gnome-initial-setup.desktop'
+
+[org/gnome/desktop/notifications/application/google-chrome]
+application-id='google-chrome.desktop'
+
+[org/gnome/desktop/notifications/application/org-gimp-gimp]
+application-id='org.gimp.GIMP.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-characters]
+application-id='org.gnome.Characters.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-clocks]
+application-id='org.gnome.clocks.desktop'
+
+[org/gnome/desktop/notifications/application/sublime-text-subl]
+application-id='sublime-text_subl.desktop'
+
+[org/gnome/desktop/notifications/application/termius-app-termius-app]
+application-id='termius-app_termius-app.desktop'
+
+[org/gnome/desktop/notifications/application/virtualbox]
+application-id='virtualbox.desktop'
+
+[org/gnome/desktop/notifications/application/vlc]
+application-id='vlc.desktop'
+
+[org/gnome/desktop/peripherals/keyboard]
+numlock-state=true
+
+[org/gnome/desktop/peripherals/mouse]
+speed=-0.20000000000000001
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/privacy]
+old-files-age=uint32 30
+recent-files-max-age=-1
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+lock-delay=uint32 3600
+picture-options='zoom'
+picture-uri='file:///home/mmoreira/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/0jepq4.jpg'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 900
+
+[org/gnome/evolution-data-server]
+migrated=true
+
+[org/gnome/gnome-system-monitor]
+current-tab='processes'
+maximized=true
+network-total-in-bits=false
+show-dependencies=false
+show-whose-processes='user'
+window-state=(1920, 999, 0, 0)
+
+[org/gnome/gnome-system-monitor/disktreenew]
+col-6-visible=true
+col-6-width=0
+columns-order=[6]
+sort-col=1
+sort-order=0
+
+[org/gnome/gnome-system-monitor/proctree]
+col-19-visible=true
+col-19-width=0
+col-20-visible=true
+col-20-width=0
+col-21-visible=true
+col-21-width=0
+
+[org/gnome/libgnomekbd/preview]
+height=611
+width=1464
+x=240
+y=135
+
+[org/gnome/mutter]
+edge-tiling=false
+workspaces-only-on-primary=false
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []
+
+[org/gnome/nautilus/list-view]
+default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', 'date_modified', 'date_accessed', 'date_created', 'recency', 'detailed_type']
+default-visible-columns=['name', 'size', 'type', 'owner', 'date_modified']
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+show-create-link=true
+show-delete-permanently=true
+
+[org/gnome/nautilus/window-state]
+initial-size=(890, 550)
+maximized=true
+
+[org/gnome/nm-applet/eap/7ea6f90b-3495-3533-948a-ef0035687c34]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/nm-applet/eap/8816b2a2-f246-4e71-8c5c-41ad8123c953]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[org/gnome/portal/filechooser/fr.handbrake.ghb]
+last-folder-path='/media/mmoreira/0003-0282/iotVideo'
+
+[org/gnome/portal/filechooser/google-chrome]
+last-folder-path='/home/mmoreira/Downloads'
+
+[org/gnome/portal/filechooser/snap.code]
+last-folder-path='/home/mmoreira/OSLabs/Devel'
+
+[org/gnome/portal/filechooser/snap.skype]
+last-folder-path='/home/mmoreira'
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+night-light-temperature=uint32 3297
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=7200
+
+[org/gnome/shell]
+disabled-extensions=['compact-quick-settings@gnome-shell-extensions.mariospr.org', 'Vitals@CoreCoding.com', 'openweather-extension@penguin-teal.github.io']
+enabled-extensions=['ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'system-monitor@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'just-perfection-desktop@just-perfection', 'blur-my-shell@aunetx', 'monitor@astraext.github.io', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com']
+favorite-apps=['firefox_firefox.desktop', 'google-chrome.desktop', 'thunderbird_thunderbird.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'snap-store_snap-store.desktop', 'todoist_todoist.desktop', 'journey_journey.desktop', 'joplin-desktop_joplin-desktop.desktop', 'org.remmina.Remmina.desktop', 'org.gnome.Terminal.desktop', 'devtoys.desktop', 'sublime-text_subl.desktop', 'code_code.desktop', 'virtualbox.desktop']
+welcome-dialog-last-shown-version='46.0'
+
+[org/gnome/shell/extensions/astra-monitor]
+gpu-indicators-order='["icon","activity bar","activity graph","activity percentage","memory bar","memory graph","memory percentage","memory value"]'
+headers-height=0
+headers-height-override=0
+memory-indicators-order='["icon","bar","graph","percentage","value","free"]'
+monitors-order='["processor","gpu","memory","storage","network","sensors"]'
+network-indicators-order='["icon","IO bar","IO graph","IO speed"]'
+processor-indicators-order='["icon","bar","graph","percentage"]'
+processor-menu-gpu-color=''
+profiles='{"default":{"panel-margin-left":0,"sensors-header-tooltip-sensor2-digits":-1,"memory-update":3,"gpu-header-memory-graph-color1":"rgba(29,172,214,1.0)","panel-box":"right","memory-header-show":true,"network-header-tooltip-io":true,"processor-header-bars-color2":"rgba(214,29,29,1.0)","processor-header-icon-size":18,"storage-source-storage-io":"auto","sensors-header-tooltip-sensor4-name":"","storage-header-icon-color":"","network-source-public-ipv4":"https://api.ipify.org","storage-header-io-graph-color2":"rgba(214,29,29,1.0)","storage-header-io":false,"processor-menu-top-processes-percentage-core":true,"sensors-header-sensor1":"\\"\\"","processor-header-graph":true,"storage-header-graph-width":30,"network-header-bars":false,"processor-source-load-avg":"auto","network-menu-arrow-color1":"rgba(29,172,214,1.0)","storage-header-io-graph-color1":"rgba(29,172,214,1.0)","gpu-header-icon":true,"processor-menu-graph-breakdown":true,"sensors-header-icon-custom":"","sensors-header-sensor2":"\\"\\"","network-header-icon-alert-color":"rgba(235, 64, 52, 1)","memory-header-tooltip-free":false,"storage-header-io-figures":2,"network-menu-arrow-color2":"rgba(214,29,29,1.0)","sensors-header-tooltip-sensor3-name":"","network-source-public-ipv6":"https://api6.ipify.org","monitors-order":"\\"\\"","network-header-graph":true,"network-indicators-order":"\\"\\"","memory-header-percentage":false,"processor-header-tooltip":true,"gpu-main":"\\"\\"","storage-header-bars":true,"sensors-header-tooltip-sensor5-digits":-1,"memory-menu-swap-color":"rgba(29,172,214,1.0)","storage-io-unit":"kB/s","memory-header-graph-width":30,"processor-header-graph-color1":"rgba(29,172,214,1.0)","storage-header-tooltip-value":false,"gpu-header-icon-custom":"","processor-header-graph-breakdown":true,"panel-margin-right":0,"gpu-header-icon-size":18,"processor-source-cpu-usage":"auto","sensors-header-tooltip-sensor3-digits":-1,"sensors-header-icon":true,"memory-header-value-figures":3,"processor-header-graph-color2":"rgba(214,29,29,1.0)","compact-mode":false,"panel-box-order":0,"compact-mode-compact-icon-custom":"","network-header-graph-width":30,"gpu-header-tooltip":true,"sensors-header-icon-alert-color":"rgba(235, 64, 52, 1)","gpu-header-activity-percentage-icon-alert-threshold":0,"sensors-header-sensor2-digits":-1,"sensors-header-tooltip-sensor2-name":"","sensors-update":3,"gpu-header-tooltip-memory-value":true,"processor-header-bars":false,"gpu-header-memory-bar-color1":"rgba(29,172,214,1.0)","gpu-header-tooltip-memory-percentage":true,"sensors-header-tooltip-sensor1":"\\"\\"","sensors-header-tooltip-sensor1-digits":-1,"storage-header-free-figures":3,"processor-header-percentage-core":false,"storage-main":"[default]","network-source-network-io":"auto","memory-header-bars":true,"processor-header-percentage":false,"sensors-header-icon-color":"","storage-header-io-threshold":0,"memory-header-graph-color1":"rgba(29,172,214,1.0)","compact-mode-activation":"both","storage-header-icon-size":18,"sensors-header-tooltip-sensor1-name":"","sensors-header-icon-size":18,"sensors-source":"auto","explicit-zero":false,"storage-header-percentage-icon-alert-threshold":0,"storage-header-tooltip-io":true,"sensors-header-tooltip-sensor2":"\\"\\"","compact-mode-expanded-icon-custom":"","memory-header-graph-color2":"rgba(29,172,214,0.3)","processor-header-icon-alert-color":"rgba(235, 64, 52, 1)","processor-header-tooltip-percentage":true,"gpu-header-show":false,"network-update":1.5,"sensors-header-tooltip-sensor3":"\\"\\"","storage-header-free-icon-alert-threshold":0,"memory-header-icon-custom":"","sensors-header-tooltip-sensor4":"\\"\\"","storage-header-percentage":false,"sensors-temperature-unit":"celsius","storage-header-icon-alert-color":"rgba(235, 64, 52, 1)","storage-menu-arrow-color2":"rgba(214,29,29,1.0)","memory-source-top-processes":"auto","storage-header-value-figures":3,"storage-header-io-bars-color1":"rgba(29,172,214,1.0)","storage-menu-arrow-color1":"rgba(29,172,214,1.0)","processor-header-graph-width":30,"network-header-icon-custom":"","gpu-header-tooltip-activity-percentage":true,"network-header-icon":true,"sensors-header-sensor2-layout":"vertical","sensors-header-tooltip-sensor5":"\\"\\"","memory-header-bars-breakdown":true,"sensors-header-show":false,"sensors-header-tooltip":false,"storage-update":3,"processor-header-bars-core":false,"storage-indicators-order":"\\"\\"","processor-menu-bars-breakdown":true,"storage-header-io-bars-color2":"rgba(214,29,29,1.0)","network-io-unit":"kB/s","storage-header-icon":true,"gpu-header-activity-graph-color1":"rgba(29,172,214,1.0)","memory-unit":"kB-kiB","processor-menu-core-bars-breakdown":true,"sensors-header-sensor2-show":false,"network-header-tooltip":true,"storage-header-tooltip-free":true,"storage-header-bars-color1":"rgba(29,172,214,1.0)","theme-style":"dark","storage-source-storage-usage":"auto","network-header-io":false,"memory-header-tooltip-percentage":true,"memory-indicators-order":"\\"\\"","memory-source-memory-usage":"auto","memory-header-graph-breakdown":false,"memory-header-tooltip-value":true,"memory-menu-graph-breakdown":true,"sensors-indicators-order":"\\"\\"","compact-mode-start-expanded":false,"startup-delay":2,"memory-header-percentage-icon-alert-threshold":0,"sensors-header-sensor1-show":false,"network-ignored-regex":"","memory-header-value":false,"memory-header-bars-color1":"rgba(29,172,214,1.0)","network-header-io-graph-color1":"rgba(29,172,214,1.0)","gpu-header-memory-bar":true,"memory-used":"total-free-buffers-cached","gpu-header-memory-graph-width":30,"gpu-header-memory-graph":false,"headers-font-family":"","memory-header-icon":true,"network-header-io-graph-color2":"rgba(214,29,29,1.0)","memory-header-bars-color2":"rgba(29,172,214,0.3)","processor-gpu":true,"network-header-icon-color":"","storage-header-value":false,"gpu-header-icon-alert-color":"rgba(235, 64, 52, 1)","processor-header-icon":true,"headers-font-size":0,"network-header-io-figures":2,"network-header-show":true,"storage-header-tooltip":true,"network-header-io-bars-color1":"rgba(29,172,214,1.0)","processor-update":1.5,"network-source-wireless":"auto","processor-indicators-order":"\\"\\"","storage-header-icon-custom":"","gpu-header-activity-bar":true,"gpu-header-activity-bar-color1":"rgba(29,172,214,1.0)","shell-bar-position":"top","network-ignored":"\\"[]\\"","network-header-io-bars-color2":"rgba(214,29,29,1.0)","memory-header-icon-color":"","sensors-header-sensor1-digits":-1,"storage-header-io-layout":"vertical","memory-header-icon-size":18,"network-header-io-threshold":0,"storage-header-show":false,"sensors-header-tooltip-sensor4-digits":-1,"processor-header-percentage-icon-alert-threshold":0,"memory-header-tooltip":true,"headers-height-override":0,"memory-header-graph":false,"network-header-icon-size":18,"gpu-header-icon-color":"","memory-header-free-figures":3,"storage-header-io-bars":false,"processor-header-bars-breakdown":true,"gpu-header-activity-graph":false,"storage-ignored":"\\"[]\\"","memory-header-icon-alert-color":"rgba(235, 64, 52, 1)","storage-header-free":false,"processor-header-icon-custom":"","gpu-header-memory-percentage":false,"processor-header-tooltip-percentage-core":false,"processor-source-cpu-cores-usage":"auto","processor-source-top-processes":"auto","processor-header-icon-color":"","sensors-header-tooltip-sensor5-name":"","gpu-header-activity-graph-width":30,"gpu-header-activity-percentage":false,"gpu-indicators-order":"\\"\\"","processor-header-bars-color1":"rgba(29,172,214,1.0)","gpu-update":1.5,"gpu-header-memory-percentage-icon-alert-threshold":0,"network-header-io-layout":"vertical","processor-header-show":true,"storage-header-graph":false,"memory-header-free-icon-alert-threshold":0,"storage-ignored-regex":"","storage-menu-device-color":"rgba(29,172,214,1.0)","storage-header-tooltip-percentage":true,"memory-header-free":false,"storage-source-top-processes":"auto"}}'
+queued-pref-category=''
+sensors-header-show=false
+sensors-indicators-order='["icon","value"]'
+storage-header-show=false
+storage-indicators-order='["icon","bar","percentage","value","free","IO bar","IO graph","IO speed"]'
+storage-main='name-ubuntu--vg-ubuntu--lv'
+
+[org/gnome/shell/extensions/blur-my-shell]
+settings-version=2
+
+[org/gnome/shell/extensions/blur-my-shell/appfolder]
+brightness=0.59999999999999998
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/dash-to-dock]
+blur=true
+brightness=0.59999999999999998
+pipeline='pipeline_default_rounded'
+sigma=30
+static-blur=true
+style-dash-to-dock=0
+
+[org/gnome/shell/extensions/blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/overview]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+brightness=0.59999999999999998
+pipeline='pipeline_default'
+sigma=30
+
+[org/gnome/shell/extensions/blur-my-shell/screenshot]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/window-list]
+brightness=0.59999999999999998
+sigma=30
+
+[org/gnome/shell/extensions/caffeine]
+indicator-position-max=2
+
+[org/gnome/shell/extensions/clipboard-indicator]
+history-size=150
+strip-text=true
+
+[org/gnome/shell/extensions/dash-to-dock]
+always-center-icons=true
+apply-custom-theme=true
+background-opacity=0.80000000000000004
+click-action='minimize'
+custom-theme-shrink=true
+dash-max-icon-size=26
+dock-position='BOTTOM'
+extend-height=false
+height-fraction=0.83999999999999997
+icon-size-fixed=false
+multi-monitor=true
+preferred-monitor=-2
+preferred-monitor-by-connector='eDP-1'
+show-mounts-only-mounted=true
+
+[org/gnome/shell/extensions/ding]
+arrangeorder='NAME'
+check-x11wayland=true
+show-network-volumes=true
+show-trash=true
+
+[org/gnome/shell/extensions/gsconnect]
+enabled=false
+id='ce4666a7-ec21-450f-b9aa-4ceb624cd0e2'
+name='oslabs-station'
+
+[org/gnome/shell/extensions/gsconnect/preferences]
+window-maximized=false
+window-size=(640, 460)
+
+[org/gnome/shell/extensions/just-perfection]
+accessibility-menu=false
+dash-icon-size=0
+keyboard-layout=true
+max-displayed-search-results=0
+panel=true
+panel-in-overview=true
+ripple-box=true
+search=true
+show-apps-button=true
+startup-status=1
+theme=false
+weather=true
+window-demands-attention-focus=false
+window-picker-icon=true
+workspace=true
+workspaces-in-app-grid=true
+
+[org/gnome/shell/extensions/openweatherrefined]
+actual-city=0
+geolocation-provider='mapquest'
+has-run=true
+locs=[(uint32 0, 'Sorocaba, Região Imediata de Sorocaba, Região Metropolitana de Sorocaba, Região Geográfica Intermediária de Sorocaba, São Paulo, Região Sudeste, Brasil', uint32 0, '-23.5003451,-47.4582864')]
+position-in-panel='left'
+weather-provider='openweathermap'
+
+[org/gnome/shell/extensions/tiling-assistant]
+activate-layout0=@as []
+activate-layout1=@as []
+activate-layout2=@as []
+activate-layout3=@as []
+active-window-hint=1
+active-window-hint-color='rgb(211,70,21)'
+auto-tile=@as []
+center-window=@as []
+debugging-free-rects=@as []
+debugging-show-tiled-rects=@as []
+default-move-mode=0
+dynamic-keybinding-behavior=0
+import-layout-examples=false
+last-version-installed=46
+overridden-settings={'org.gnome.mutter.edge-tiling': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-left': <@mb nothing>, 'org.gnome.mutter.keybindings.toggle-tiled-right': <@mb nothing>}
+restore-window=['<Super>Down']
+search-popup-layout=@as []
+tile-bottom-half=['<Super>KP_2']
+tile-bottom-half-ignore-ta=@as []
+tile-bottomleft-quarter=['<Super>KP_1']
+tile-bottomleft-quarter-ignore-ta=@as []
+tile-bottomright-quarter=['<Super>KP_3']
+tile-bottomright-quarter-ignore-ta=@as []
+tile-edit-mode=@as []
+tile-left-half=['<Super>Left', '<Super>KP_4']
+tile-left-half-ignore-ta=@as []
+tile-maximize=['<Super>Up', '<Super>KP_5']
+tile-maximize-horizontally=@as []
+tile-maximize-vertically=@as []
+tile-right-half=['<Super>Right', '<Super>KP_6']
+tile-right-half-ignore-ta=@as []
+tile-top-half=['<Super>KP_8']
+tile-top-half-ignore-ta=@as []
+tile-topleft-quarter=['<Super>KP_7']
+tile-topleft-quarter-ignore-ta=@as []
+tile-topright-quarter=['<Super>KP_9']
+tile-topright-quarter-ignore-ta=@as []
+tiling-popup-all-workspace=true
+toggle-always-on-top=@as []
+toggle-tiling-popup=@as []
+
+[org/gnome/shell/extensions/vitals]
+icon-style=0
+include-static-info=true
+memory-measurement=1
+menu-centered=false
+position-in-panel=1
+show-battery=true
+show-fan=false
+show-voltage=false
+update-time=60
+use-higher-precision=true
+
+[org/gnome/shell/weather]
+automatic-location=true
+locations=@av []
+
+[org/gnome/shell/world-clocks]
+locations=[<(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>, <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('London', 'EGWU', true, [(0.89971722940307675, -0.007272211034407213)], [(0.89884456477707964, -0.0020362232784242244)])>)>]
+
+[org/gnome/shotwell/crop-settings]
+last-crop-height=1
+last-crop-menu-choice=1
+last-crop-width=1
+
+[org/gnome/shotwell/preferences/export]
+constraint='ORIGINAL'
+export-format-mode='CURRENT'
+export-metadata=true
+photo-file-format='JFIF'
+quality='HIGH'
+scale=1200
+
+[org/gnome/shotwell/preferences/window]
+direct-height=961
+direct-maximize=false
+direct-width=1920
+
+[org/gnome/software]
+check-timestamp=int64 1722423247
+flatpak-purge-timestamp=int64 1722387151
+
+[org/gnome/system/location]
+enabled=true
+
+[org/gtk/gtk4/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+sidebar-width=140
+sort-column='name'
+sort-directories-first=true
+sort-order='ascending'
+type-format='category'
+view-type='grid'
+window-size=(1208, 372)
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=true
+show-size-column=true
+show-type-column=true
+sidebar-width=212
+sort-column='name'
+sort-directories-first=false
+sort-order='ascending'
+type-format='category'
+window-position=(26, 23)
+window-size=(1203, 902)
