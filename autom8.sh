@@ -222,8 +222,11 @@ install_desktop() {
 
     sleep 1
     echo "Restaurando configurações do Gnome"
-    
+    git clone https://github.com/mdmjunior/AutoM8.git
+    cd AutoM8 || exit
+    dconf load -f / < saved_settings.dconf
 
+    sleep 1
     # Removendo pacotes não utilizados
     echo "REMOVENDO PACOTES DESNECESSÁRIOS"
     sudo apt remove -y --purge apport apport-gtk rhythmbox
@@ -231,22 +234,25 @@ install_desktop() {
     sudo apt autoclean -y
     sudo systemctl daemon-reload
 
+    sleep 1
     # Criando chave privada para o usuario
     echo "Criando Chave privada para o usuário $USERNM"
     ssh-keygen -t ed25519 -C "mdmjunior@gmail.com"
     echo "Chave criada com sucesso"
 
+    sleep 1
     # Adicionando usuário ao sudo sem senha
     echo "Adicionando usuário ao sudoers"
     echo "%mmoreira ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
+    sleep 1
     # Configurando SSH
     echo "Configurando SSH Server para permitir login com chave"
     sudo sed -i 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
     echo "Reiniciando serviço SSHD"
     sudo systemctl restart sshd
 
-
+    sleep 1
     echo "SISTEMA PRONTO PARA USO"
     exit
 }
