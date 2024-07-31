@@ -58,6 +58,7 @@ install_desktop() {
     echo "DISTRO: $DISTRO"
     echo "RELEASE: $RELEASE"
     echo "USUARIO: $USERNM"
+    sudo systemctl daemon-reload
     sleep 1
 
     # Atualiza os repositórios e o sistema operacional
@@ -72,7 +73,6 @@ install_desktop() {
         echo "Atualização do sistema operacional finalizada!"
     fi
 
-    sudo systemctl daemon-reload
     sleep 1
     echo "INSTALANDO PACOTES BÁSICOS"
     sudo apt install -y ntpdate vim net-tools iproute2 curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor
@@ -180,13 +180,12 @@ install_desktop() {
     sudo snap install gedit
     sudo snap install go --classic
     sudo snap install joplin-desktop
-    sudo snap install journey
     sudo snap install lxd
     sudo snap install neofetch-desktop
     sudo snap install smart-file-renamer
     sudo snap install spotify
     sudo snap install sublime-text --classic
-    sudo snap install wonderwall
+    sudo snap install wonderwallMarcio
     sudo snap install gnome-system-monitor
     sudo snap install gnome-logs
     sudo snap install todoist
@@ -250,7 +249,7 @@ install_desktop() {
     echo "Configurando SSH Server para permitir login com chave"
     sudo sed -i 's/#PubkeyAuthentication/PubkeyAuthentication/g' /etc/ssh/sshd_config
     echo "Reiniciando serviço SSHD"
-    sudo systemctl restart sshd
+    sudo systemctl restart ssh
 
     sleep 1
     echo "SISTEMA PRONTO PARA USO"
