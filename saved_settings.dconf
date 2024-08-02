@@ -49,7 +49,7 @@ panel-id='timer'
 size=(870, 690)
 
 [org/gnome/control-center]
-last-panel='bluetooth'
+last-panel='applications'
 window-state=(980, 640, true)
 
 [org/gnome/deja-dup]
@@ -99,24 +99,31 @@ document-font-name='Sans 12'
 enable-animations=true
 font-name='Ubuntu Sans 12'
 gtk-theme='Yaru-dark'
-icon-theme='Yaru-dark'
+icon-theme='Yaru'
 monospace-font-name='Ubuntu Sans Mono 14'
 
 [org/gnome/desktop/notifications]
 application-children=['gnome-initial-setup', 'termius-app-termius-app', 'virtualbox', 'google-chrome', 'sublime-text-subl', 'cheese-cheese', 'org-gnome-characters', 'org-gnome-clocks', 'vlc', 'org-gimp-gimp', 'organize-my-files-organize-my-files', 'spotify-spotify']
 show-banners=false
+show-in-lock-screen=false
 
 [org/gnome/desktop/notifications/application/cheese-cheese]
 application-id='cheese_cheese.desktop'
 
+[org/gnome/desktop/notifications/application/devtoys]
+enable=false
+
 [org/gnome/desktop/notifications/application/gnome-initial-setup]
 application-id='gnome-initial-setup.desktop'
+enable=false
 
 [org/gnome/desktop/notifications/application/google-chrome]
 application-id='google-chrome.desktop'
+enable=true
 
 [org/gnome/desktop/notifications/application/org-gimp-gimp]
 application-id='org.gimp.GIMP.desktop'
+enable=false
 
 [org/gnome/desktop/notifications/application/org-gnome-characters]
 application-id='org.gnome.Characters.desktop'
@@ -124,14 +131,28 @@ application-id='org.gnome.Characters.desktop'
 [org/gnome/desktop/notifications/application/org-gnome-clocks]
 application-id='org.gnome.clocks.desktop'
 
+[org/gnome/desktop/notifications/application/org-gnome-fileroller]
+enable=false
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+enable=true
+
+[org/gnome/desktop/notifications/application/org-gnome-shell-extensions-gsconnect]
+enable=false
+
+[org/gnome/desktop/notifications/application/org-gnome-snapshot]
+enable=false
+
 [org/gnome/desktop/notifications/application/organize-my-files-organize-my-files]
 application-id='organize-my-files_organize-my-files.desktop'
 
 [org/gnome/desktop/notifications/application/spotify-spotify]
 application-id='spotify_spotify.desktop'
+enable=false
 
 [org/gnome/desktop/notifications/application/sublime-text-subl]
 application-id='sublime-text_subl.desktop'
+enable=false
 
 [org/gnome/desktop/notifications/application/termius-app-termius-app]
 application-id='termius-app_termius-app.desktop'
@@ -141,6 +162,7 @@ application-id='virtualbox.desktop'
 
 [org/gnome/desktop/notifications/application/vlc]
 application-id='vlc.desktop'
+enable=false
 
 [org/gnome/desktop/peripherals/keyboard]
 numlock-state=true
@@ -152,8 +174,9 @@ speed=-0.20000000000000001
 two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/privacy]
-old-files-age=uint32 30
-recent-files-max-age=-1
+old-files-age=uint32 7
+recent-files-max-age=7
+remove-old-trash-files=true
 
 [org/gnome/desktop/screensaver]
 color-shading-type='solid'
