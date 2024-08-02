@@ -189,7 +189,7 @@ install_desktop() {
     sudo snap install firmware-updater
     echo -e "\e[32mPacotes Instalados\e[0m"
 
-    echo "INSTALANDO STACER"con
+    echo "INSTALANDO STACER"
     sudo nala install -y stacer
     echo -e "\e[32mPacotes Instalados\e[0m"
 
