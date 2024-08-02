@@ -11,7 +11,7 @@ is-maximized=true
 last-used-version='0.5.0'
 
 [com/ubuntu/update-notifier]
-release-check-time=uint32 1721310024
+release-check-time=uint32 1722548662
 
 [org/gnome/Snapshot]
 capture-mode='video'
@@ -65,7 +65,7 @@ name='X-Pardus-Apps.directory'
 translate=true
 
 [org/gnome/desktop/app-folders/folders/Utilities]
-apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+apps=['org.gnome.tweaks.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DejaDup.desktop', 'nm-connection-editor.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.seahorse.Application.desktop', 'gnome-abrt.desktop', 'gnome-system-log.desktop', 'org.gnome.Connections.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.fonts.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop', 'org.gnome.Evince.desktop']
 categories=['X-GNOME-Utilities']
 name='X-GNOME-Utilities.directory'
 translate=true
@@ -78,10 +78,10 @@ translate=true
 [org/gnome/desktop/background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///home/mmoreira/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/0jepq4.jpg'
-picture-uri-dark='file:///usr/share/backgrounds/Fuwafuwa_nanbatto_san_by_amaral-dark.png'
-primary-color='#000000'
-secondary-color='#000000'
+picture-uri='file:///usr/share/backgrounds/contest/noble.xml'
+picture-uri-dark='file:///usr/share/backgrounds/contest/noble.xml'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/datetime]
 automatic-timezone=false
@@ -95,12 +95,15 @@ xkb-options=@as []
 [org/gnome/desktop/interface]
 clock-show-weekday=true
 color-scheme='prefer-dark'
+document-font-name='Sans 12'
 enable-animations=true
+font-name='Ubuntu Sans 12'
 gtk-theme='Yaru-dark'
-icon-theme='Yaru'
+icon-theme='Yaru-dark'
+monospace-font-name='Ubuntu Sans Mono 14'
 
 [org/gnome/desktop/notifications]
-application-children=['gnome-initial-setup', 'termius-app-termius-app', 'virtualbox', 'google-chrome', 'sublime-text-subl', 'cheese-cheese', 'org-gnome-characters', 'org-gnome-clocks', 'vlc', 'org-gimp-gimp']
+application-children=['gnome-initial-setup', 'termius-app-termius-app', 'virtualbox', 'google-chrome', 'sublime-text-subl', 'cheese-cheese', 'org-gnome-characters', 'org-gnome-clocks', 'vlc', 'org-gimp-gimp', 'organize-my-files-organize-my-files', 'spotify-spotify']
 show-banners=false
 
 [org/gnome/desktop/notifications/application/cheese-cheese]
@@ -120,6 +123,12 @@ application-id='org.gnome.Characters.desktop'
 
 [org/gnome/desktop/notifications/application/org-gnome-clocks]
 application-id='org.gnome.clocks.desktop'
+
+[org/gnome/desktop/notifications/application/organize-my-files-organize-my-files]
+application-id='organize-my-files_organize-my-files.desktop'
+
+[org/gnome/desktop/notifications/application/spotify-spotify]
+application-id='spotify_spotify.desktop'
 
 [org/gnome/desktop/notifications/application/sublime-text-subl]
 application-id='sublime-text_subl.desktop'
@@ -150,15 +159,28 @@ recent-files-max-age=-1
 color-shading-type='solid'
 lock-delay=uint32 3600
 picture-options='zoom'
-picture-uri='file:///home/mmoreira/snap/wonderwall/39/.local/share/ktechpit/WonderWall/download/0jepq4.jpg'
-primary-color='#000000'
-secondary-color='#000000'
+picture-uri='file:///usr/share/backgrounds/contest/noble.xml'
+primary-color='#000000000000'
+secondary-color='#000000000000'
 
 [org/gnome/desktop/search-providers]
 sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
 
 [org/gnome/desktop/session]
 idle-delay=uint32 900
+
+[org/gnome/evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=false
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=true
+sidebar-page='thumbnails'
+sidebar-size=132
+sizing-mode='automatic'
+window-ratio=(0.98039215686274506, 0.75757575757575757)
 
 [org/gnome/evolution-data-server]
 migrated=true
@@ -227,7 +249,7 @@ ignore-phase2-ca-cert=false
 last-folder-path='/media/mmoreira/0003-0282/iotVideo'
 
 [org/gnome/portal/filechooser/google-chrome]
-last-folder-path='/home/mmoreira/Downloads'
+last-folder-path='/home/mmoreira/Imagens'
 
 [org/gnome/portal/filechooser/snap.code]
 last-folder-path='/home/mmoreira/OSLabs/Devel'
@@ -245,9 +267,10 @@ sleep-inactive-ac-type='nothing'
 sleep-inactive-battery-timeout=7200
 
 [org/gnome/shell]
+app-picker-layout=[{'yelp.desktop': <{'position': <0>}>, 'gnome-session-properties.desktop': <{'position': <1>}>, 'update-manager.desktop': <{'position': <2>}>, 'org.gnome.Calculator.desktop': <{'position': <3>}>, 'org.gnome.Calendar.desktop': <{'position': <4>}>, 'org.gnome.Snapshot.desktop': <{'position': <5>}>, 'cheese_cheese.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'usb-creator-gtk.desktop': <{'position': <8>}>, 'drawio_drawio.desktop': <{'position': <9>}>, 'software-properties-drivers.desktop': <{'position': <10>}>, 'dropbox.desktop': <{'position': <11>}>, 'organize-my-files_organize-my-files.desktop': <{'position': <12>}>, 'org.gnome.TextEditor.desktop': <{'position': <13>}>, 'org.gnome.PowerStats.desktop': <{'position': <14>}>, 'org.gnome.Extensions.desktop': <{'position': <15>}>, 'firmware-updater_firmware-updater.desktop': <{'position': <16>}>, 'gedit_gedit.desktop': <{'position': <17>}>, 'com.mattjakeman.ExtensionManager.desktop': <{'position': <18>}>, 'fr.handbrake.ghb.desktop': <{'position': <19>}>, 'htop.desktop': <{'position': <20>}>, 'htop_htop.desktop': <{'position': <21>}>, 'display-im6.q16.desktop': <{'position': <22>}>, 'indicator-multiload.desktop': <{'position': <23>}>}, {'gdebi.desktop': <{'position': <0>}>, 'laptop-mode-tools.desktop': <{'position': <1>}>, 'libreoffice-startcenter.desktop': <{'position': <2>}>, 'libreoffice-draw.desktop': <{'position': <3>}>, 'libreoffice-impress.desktop': <{'position': <4>}>, 'libreoffice-math.desktop': <{'position': <5>}>, 'org.gnome.Weather.desktop': <{'position': <6>}>, 'mc.desktop': <{'position': <7>}>, 'mcedit.desktop': <{'position': <8>}>, 'gnome-system-monitor_gnome-system-monitor.desktop': <{'position': <9>}>, 'org.gnome.SystemMonitor.desktop': <{'position': <10>}>, 'com.obsproject.Studio.desktop': <{'position': <11>}>, 'org.gimp.GIMP.desktop': <{'position': <12>}>, 'org.gnome.Software.desktop': <{'position': <13>}>, 'software-properties-gtk.desktop': <{'position': <14>}>, 'org.gnome.clocks.desktop': <{'position': <15>}>, 'vlc.desktop': <{'position': <16>}>, 'simple-scan.desktop': <{'position': <17>}>, 'org.gnome.Shotwell.desktop': <{'position': <18>}>, 'skype_skypeforlinux.desktop': <{'position': <19>}>, 'smart-file-renamer_smart-file-renamer.desktop': <{'position': <20>}>, 'stacer.desktop': <{'position': <21>}>, 'gnome-language-selector.desktop': <{'position': <22>}>, 'timeshift-gtk.desktop': <{'position': <23>}>}, {'Utilities': <{'position': <0>}>, 'org.gnome.Totem.desktop': <{'position': <1>}>, 'vim.desktop': <{'position': <2>}>, 'org.gnome.eog.desktop': <{'position': <3>}>, 'org.wireshark.Wireshark.desktop': <{'position': <4>}>, 'wonderwall_wonderwall.desktop': <{'position': <5>}>, 'zenmap.desktop': <{'position': <6>}>, 'zenmap-root.desktop': <{'position': <7>}>}]
 disabled-extensions=['compact-quick-settings@gnome-shell-extensions.mariospr.org', 'Vitals@CoreCoding.com', 'openweather-extension@penguin-teal.github.io']
-enabled-extensions=['ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'system-monitor@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'just-perfection-desktop@just-perfection', 'blur-my-shell@aunetx', 'monitor@astraext.github.io', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com']
-favorite-apps=['firefox_firefox.desktop', 'google-chrome.desktop', 'thunderbird_thunderbird.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'snap-store_snap-store.desktop', 'todoist_todoist.desktop', 'journey_journey.desktop', 'joplin-desktop_joplin-desktop.desktop', 'org.remmina.Remmina.desktop', 'org.gnome.Terminal.desktop', 'devtoys.desktop', 'sublime-text_subl.desktop', 'code_code.desktop', 'virtualbox.desktop']
+enabled-extensions=['ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'system-monitor@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'caffeine@patapon.info', 'clipboard-indicator@tudmotu.com', 'just-perfection-desktop@just-perfection', 'blur-my-shell@aunetx', 'monitor@astraext.github.io', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'AlphabeticalAppGrid@stuarthayhurst', 'ding@rastersoft.com']
+favorite-apps=['firefox_firefox.desktop', 'google-chrome.desktop', 'thunderbird_thunderbird.desktop', 'spotify_spotify.desktop', 'org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'snap-store_snap-store.desktop', 'todoist_todoist.desktop', 'joplin-desktop_joplin-desktop.desktop', 'org.remmina.Remmina.desktop', 'org.gnome.Terminal.desktop', 'devtoys.desktop', 'sublime-text_subl.desktop', 'code_code.desktop', 'virtualbox.desktop']
 welcome-dialog-last-shown-version='46.0'
 
 [org/gnome/shell/extensions/astra-monitor]
@@ -301,10 +324,13 @@ brightness=0.59999999999999998
 sigma=30
 
 [org/gnome/shell/extensions/caffeine]
-indicator-position-max=2
+indicator-position-max=1
+toggle-state=false
 
 [org/gnome/shell/extensions/clipboard-indicator]
 history-size=150
+move-item-first=true
+preview-size=50
 strip-text=true
 
 [org/gnome/shell/extensions/dash-to-dock]
@@ -313,7 +339,7 @@ apply-custom-theme=true
 background-opacity=0.80000000000000004
 click-action='minimize'
 custom-theme-shrink=true
-dash-max-icon-size=26
+dash-max-icon-size=30
 dock-position='BOTTOM'
 extend-height=false
 height-fraction=0.83999999999999997
@@ -324,7 +350,7 @@ preferred-monitor-by-connector='eDP-1'
 show-mounts-only-mounted=true
 
 [org/gnome/shell/extensions/ding]
-arrangeorder='NAME'
+arrangeorder='KIND'
 check-x11wayland=true
 show-network-volumes=true
 show-trash=true
@@ -444,8 +470,8 @@ direct-maximize=false
 direct-width=1920
 
 [org/gnome/software]
-check-timestamp=int64 1722423247
-flatpak-purge-timestamp=int64 1722387151
+check-timestamp=int64 1722548670
+flatpak-purge-timestamp=int64 1722555804
 
 [org/gnome/system/location]
 enabled=true
@@ -459,13 +485,13 @@ sort-column='name'
 sort-directories-first=true
 sort-order='ascending'
 type-format='category'
-view-type='grid'
-window-size=(1208, 372)
+view-type='list'
+window-size=(1204, 850)
 
 [org/gtk/settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
-show-hidden=true
+show-hidden=false
 show-size-column=true
 show-type-column=true
 sidebar-width=212
@@ -473,5 +499,5 @@ sort-column='name'
 sort-directories-first=false
 sort-order='ascending'
 type-format='category'
-window-position=(26, 23)
+window-position=(0, 82)
 window-size=(1203, 902)
