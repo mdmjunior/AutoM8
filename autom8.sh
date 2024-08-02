@@ -134,7 +134,6 @@ install_desktop() {
             https://extensions.gnome.org/extension/517/caffeine/
             https://extensions.gnome.org/extension/779/clipboard-indicator/
             https://extensions.gnome.org/extension/2087/desktop-icons-ng-ding/
-            https://extensions.gnome.org/extension/1319/gsconnect/
             https://extensions.gnome.org/extension/1301/ubuntu-appindicators/
             https://extensions.gnome.org/extension/1300/ubuntu-dock/
             https://extensions.gnome.org/extension/19/user-themes/
@@ -162,6 +161,11 @@ install_desktop() {
     sudo apt install -y virtualbox virtualbox-ext-pack virtualbox-dkms virtualbox-guest-utils virtualbox-guest-additions-iso virtualbox-guest-x11
     echo -e "\e[32mPacotes Instalados\e[0m"
 
+    echo "INSTALANDO DOCKER"
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo systemctl enable docker
+    echo -e "\e[32mPacotes Instalados\e[0m"
+
     echo "INSTALANDO FERRAMENTAS DE AUTOMAÇÃO"
     sudo apt install -y ansible ansible-lint terraform packer vagrant
     echo -e "\e[32mPacotes Instalados\e[0m"
@@ -179,9 +183,10 @@ install_desktop() {
     sudo snap install sublime-text --classic
     sudo snap install wonderwall
     sudo snap install gnome-system-monitor
-    sudo snap install gnome-logs
-    sudo snap install todoist
     sudo snap install cheese
+    sudo snap install gtk-theme-orchis
+    sudo snap install gtk-common-themes
+    sudo snap install firmware-updater
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "INSTALANDO STACER"
