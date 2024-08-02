@@ -1,0 +1,6 @@
+{
+  "name": "oslabs-devel-container",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+  }
+}
