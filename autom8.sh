@@ -62,7 +62,7 @@ install_desktop() {
     echo -e "\e[32mUSUARIO: $USERNM\e[0m"
     sudo systemctl daemon-reload
 
-    # Atualiza os repositórios e o sistema operacional
+    # Atualiza os repositórios e o sistema operacional  teste
     if [ "$USERNM" == "root" ]; then
         echo "Esse script deve ser executado com o seu usuario, $USERNM"
         exit 1
