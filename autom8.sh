@@ -74,7 +74,7 @@ install_desktop() {
     fi
 
     echo "INSTALANDO PACOTES BÁSICOS"
-    sudo apt install -y ntpdate vim net-tools iproute2 curl wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor smartmontools linux-tools-generic
+    sudo apt install -y ntpdate vim net-tools iproute2 curl sshpass ethtool colordiff wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor smartmontools linux-tools-generic
     echo -e "\e[32mPacotes instalados\e[0m"
 
     echo "INSTALANDO GERENCIADORES DE PACOTES"
