@@ -15,7 +15,7 @@ check_env() {
     USERNM=$(whoami)
 
     clear
-    echo "  [ -------------------------------------------------- ]"
+    echo "                                                        "
     echo "                                                        "
     echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
     echo "  ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
@@ -23,35 +23,17 @@ check_env() {
     echo "  ██╔══██║██║   ██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██╗"
     echo "  ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
     echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
-    echo "  [ -------------------------------------------------- ]"
+    echo "                                                        "
     echo "              Ubuntu Post-Installation Tool             "
     echo "       https://marciomoreirajunior.com.br/AutoM8/       "
 
     # Verifica se a distribuição é compatível
-    if [ "$DISTRO" != "Ubuntu" ]; then
-        echo "Distribuição: $DISTRO"
-        echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
-        exit 1
-    fi
-
-    if [[ $(echo "$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
-        echo "Release: $RELEASE"
-        echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
-        exit 1
-    fi
-
-    # Verifica finalidade da instalação
-    echo "O AutoM8 vai executar em um desktop ou server? (desktop/server): "
-    read -r INSTALL_TYPE
-
-    if [ "$INSTALL_TYPE" == "desktop" ]; then
-        install_desktop
-        elif [ "$INSTALL_TYPE" == "server" ]; then
-        install_server
-    else
-        echo "Tipo de instalação inválido: $INSTALL_TYPE"
-        exit 1
-    fi
+if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
+    echo "Distribuição: $DISTRO"
+    echo "Release: $RELEASE"
+    echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
+    exit 1
+fi
 }
 
 install_desktop() {
