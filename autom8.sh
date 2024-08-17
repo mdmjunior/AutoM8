@@ -14,6 +14,13 @@ check_env() {
     RELEASE=$(lsb_release -rs 2>/dev/null)
     USERNM=$(whoami)
 
+    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
+        echo "Distribuição: $DISTRO"
+        echo "Release: $RELEASE"
+        echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
+        exit 1
+    fi
+
     clear
     echo "                                                        "
     echo "                                                        "
@@ -27,13 +34,6 @@ check_env() {
     echo "              Ubuntu Post-Installation Tool             "
     echo "       https://marciomoreirajunior.com.br/AutoM8/       "
 
-    # Verifica se a distribuição é compatível
-if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
-    echo "Distribuição: $DISTRO"
-    echo "Release: $RELEASE"
-    echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
-    exit 1
-fi
 }
 
 install_desktop() {
