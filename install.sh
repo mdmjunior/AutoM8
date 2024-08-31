@@ -19,7 +19,7 @@ first_run() {
     clear
 
     # Checking distro and release, at this time, AutoM8 only works with Ubuntu 24.04
-    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
+    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo "$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
         echo "Distribution: $DISTRO"
         echo "Release: $RELEASE"
         echo "AutoM8 only support Ubuntu 24.04. Sorry!"
