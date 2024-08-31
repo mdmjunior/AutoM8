@@ -14,7 +14,7 @@ RELEASE=$(lsb_release -rs 2>/dev/null)
 
 first_run() {
     # This function will check if the environment is ok to run AutoM8 or else if the tool was already ran on the system.
-    echo "AutoM8 will perform an environment check, please wait..."
+    echo "AutoM8 will perform an environment check, make sure you have sudo privileges. Please wait..."
     sleep 1
     clear
 
@@ -34,7 +34,7 @@ first_run() {
     else
         echo "AutoM8 is not installed, it will be performed now!"
         echo "Updating Ubuntu repository and upgrading the current installed packages: "
-        sudo apt update && sudo apt upgrade -y > /dev/null 2>&1;
+        sudo apt update && sudo apt upgrade -y
         echo "Operating system packages updated to the latest available version!"
         sleep 2
         clear
@@ -45,7 +45,6 @@ first_run() {
         clear
         echo "Downloading AutoM8: "
         git clone https://github.com/mdmjunior/AutoM8.git
-        mv AutoM8/ /opt/
         chmod +x $ATM_HOME/autom8.sh
         echo "AutoM8 Installed. Run $ATM_HOME/autom8.sh --help to use the tool"
         exit 1
