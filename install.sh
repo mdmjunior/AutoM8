@@ -51,3 +51,5 @@ first_run() {
         exit 1
     fi
 }
+
+first_run
