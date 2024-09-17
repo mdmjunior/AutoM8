@@ -15,14 +15,13 @@ check_env() {
     USERNM=$(whoami)
 
     if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
-        echo "Distribuição: $DISTRO"
-        echo "Release: $RELEASE"
+        echo -e "\e[32mDISTRIBUIÇÃO:\e[0m $DISTRO"
+        echo -e "\e[32mRELEASE:\e[0m $RELEASE"
         echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
         exit 1
     fi
 
     clear
-    echo "                                                        "
     echo "                                                        "
     echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
     echo "  ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
@@ -31,22 +30,20 @@ check_env() {
     echo "  ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
     echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
     echo "                                                        "
-    echo "              Ubuntu Post-Installation Tool             "
-    echo "       https://marciomoreirajunior.com.br/AutoM8/       "
-
+    echo "            Ubuntu Post-Installation Tool               "
 }
 
 install_desktop() {
-    echo "INICIANDO INSTALAÇÃO OTIMIZADA PARA DESKTOP"
+    echo "INICIANDO INSTALAÇÃO BÁSICA PARA DESKTOP"
     echo "O script irá preparar o seu sistema operacional, aguarde."
-    echo -e "\e[32mDISTRO: $DISTRO\e[0m"
-    echo -e "\e[32mRELEASE: $RELEASE\e[0m"
-    echo -e "\e[32mUSUARIO: $USERNM\e[0m"
+    echo -e "\e[32mDISTRO:\e[0m $DISTRO"
+    echo -e "\e[32mRELEASE:\e[0m $RELEASE"
+    echo -e "\e[32mUSUARIO:\e[0m $USERNM"
     sudo systemctl daemon-reload
 
-    # Atualiza os repositórios e o sistema operacional  teste
+    # Atualiza os repositórios e o sistema operacional
     if [ "$USERNM" == "root" ]; then
-        echo "Esse script deve ser executado com o seu usuario, $USERNM"
+        echo "[ERROR]: Esse script deve ser executado com o seu usuario, $USERNM"
         exit 1
     else
         echo "ATUALIZANDO OS REPOSITÓRIOS E PACOTES DO SO"
@@ -56,8 +53,8 @@ install_desktop() {
     fi
 
     echo "INSTALANDO PACOTES BÁSICOS"
-    sudo apt install -y ntpdate vim net-tools iproute2 curl sshpass ethtool wget links htop iotop openssh-server openssl tmux multitail zsh sshpass expect gpg dconf-cli dconf-editor linux-tools-generic
-    echo -e "\e[32mPacotes instalados\e[0m"
+    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic
+    echo -e "\e[32mPacotes básicos instalados\e[0m"
 
     echo "INSTALANDO GERENCIADORES DE PACOTES"
     sudo apt install -y gnome-software-plugin-flatpak flatpak synaptic snapd
@@ -77,8 +74,10 @@ install_desktop() {
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     echo "INSTALANDO GOOGLE CHROME"
+    cd Downloads/ || exit
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
+    sudo apt install -y chrome-gnome-shell
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "INSTALANDO FERRAMENTAS DE COMPACTAÇÃO DE ARQUIVOS"
@@ -90,7 +89,7 @@ install_desktop() {
     echo -e "\e[32mPacotes instalados\e[0m"
 
     echo "INSTALANDO FERRAMENTAS DE REDE"
-    sudo apt install -y tcpdump nmap zenmap iptables iptables-persistent traceroute iptraf-ng netcat-traditional wireshark tshark iperf geoipupdate geoip-database
+    sudo apt install -y tcpdump nmap zenmap iptables iptables-persistent ethtool iproute2 traceroute iptraf-ng netcat-traditional wireshark iperf
     echo -e "\e[32mPacotes instalados\e[0m"
 
     echo "INSTALANDO PACOTES DE SEGURANÇA E VPN"
@@ -102,7 +101,7 @@ install_desktop() {
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "INSTALANDO ADDONS DO GNOME E FONTES"
-    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code chrome-gnome-shell
+    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-clocks gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "INSTALANDO EXTENSÕES DO GNOME"
@@ -151,10 +150,8 @@ install_desktop() {
     sudo snap install spotify
     sudo snap install sublime-text --classic
     sudo snap install wonderwall
-    sudo snap install gnome-system-monitor
     sudo snap install gtk-theme-orchis
     sudo snap install gtk-common-themes
-    sudo snap install firmware-updater
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "ATUALIZANDO EDITOR DE TEXTO PADRÃO"
@@ -165,7 +162,7 @@ install_desktop() {
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
     echo "ADICIONANDO USUARIO AO GRUPO DO VBOX"
-    sudo usermod -aG vboxusers mmoreira
+    sudo usermod -aG vboxusers $USERNM
 
     echo "HABILITANDO MINIMIZAR NO CLICK DO MOUSE"
     gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
@@ -187,11 +184,13 @@ install_desktop() {
 
     # Criando chave privada para o usuario
     echo "CRIANDO CHAVE PRIVADA PARA O USUÁRIO $USERNM"
-    ssh-keygen -t ed25519 -C "mdmjunior@gmail.com"
+    echo "Qual o email do usuário?"
+    read -r EMAIL_USR
+    ssh-keygen -t ed25519 -C "$EMAIL_USR"
 
     # Adicionando usuário ao sudo sem senha
     echo "ADICIONANDO USUÁRIO AO SUDOERS"
-    echo "%mmoreira ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
+    echo "%$USERNM ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers
 
     # Configurando SSH
     echo "CONFIGURANDO SSH SERVER PARA PERMITIR LOGIN COM CHAVE"
