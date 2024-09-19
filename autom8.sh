@@ -9,9 +9,10 @@
 
 check_env() {
 
-    # A função check_env() verifica se a distribuição e release são compatíveis com o AutoM8, que foi desenvolvido em Ubuntu 24.04.
+    # Verifica se a distribuição e release são compatíveis com o AutoM8, que foi desenvolvido em Ubuntu 24.04.
     DISTRO=$(lsb_release -is 2>/dev/null)
     RELEASE=$(lsb_release -rs 2>/dev/null)
+    # Verifica usuário atual
     USERNM=$(whoami)
 
     if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
@@ -31,10 +32,19 @@ check_env() {
     echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
     echo "                                                        "
     echo "            Ubuntu Post-Installation Tool               "
+
+    # Verifica se o script já foi instalado, se sim, vai direto para a função recipes.
+    LOG_FILE="logs/install.log"
+    if [ -f "$LOG_FILE" ]; then
+        echo "AutoM8 já executado anteriormente."
+        recipes
+    else
+        install_autom8
+    fi
 }
 
-install_desktop() {
-    echo "INICIANDO INSTALAÇÃO BÁSICA PARA DESKTOP"
+install_autom8() {
+    echo "INSTALANDO AUTOM8"
     echo "O script irá preparar o seu sistema operacional, aguarde."
     echo -e "\e[32mDISTRO:\e[0m $DISTRO"
     echo -e "\e[32mRELEASE:\e[0m $RELEASE"
@@ -50,11 +60,17 @@ install_desktop() {
         echo "Seu usuário não tem privilégios de root, digite a senha para elevação: "
         sudo apt update && sudo apt upgrade -y
         echo -e "\e[32mAtualização do sistema operacional finalizada.\e[0m"
-    fi
 
-    echo "INSTALANDO PACOTES BÁSICOS"
-    sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic
-    echo -e "\e[32mPacotes básicos instalados\e[0m"
+        echo "INSTALANDO PACOTES BÁSICOS"
+        sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic
+        echo -e "\e[32mPacotes básicos instalados\e[0m"
+
+        install_desktop
+    fi
+}
+
+install_desktop() {
+    echo "INICIANDO INSTALAÇÃO PARA DESKTOP"
 
     echo "INSTALANDO GERENCIADORES DE PACOTES"
     sudo apt install -y gnome-software-plugin-flatpak flatpak synaptic snapd
@@ -162,7 +178,7 @@ install_desktop() {
     sudo ln -s /usr/bin/python3 /usr/bin/python
 
     echo "ADICIONANDO USUARIO AO GRUPO DO VBOX"
-    sudo usermod -aG vboxusers $USERNM
+    sudo usermod -aG vboxusers "$USERNM"
 
     echo "HABILITANDO MINIMIZAR NO CLICK DO MOUSE"
     gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
