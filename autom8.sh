@@ -34,7 +34,7 @@ check_env() {
     echo "            Ubuntu Post-Installation Tool               "
 
     # Verifica se o script já foi instalado, se sim, vai direto para a função recipes.
-    LOG_FILE="logs/install.log"
+    LOG_FILE="AutoM8/logs/install.log"
     if [ -f "$LOG_FILE" ]; then
         echo "AutoM8 já executado anteriormente."
         recipes
@@ -61,9 +61,15 @@ install_autom8() {
         sudo apt update && sudo apt upgrade -y
         echo -e "\e[32mAtualização do sistema operacional finalizada.\e[0m"
 
-        echo "INSTALANDO PACOTES BÁSICOS"
+        echo "INSTALANDO PACOTES BÁSICOS DO SO"
         sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic
         echo -e "\e[32mPacotes básicos instalados\e[0m"
+
+        echo "CRIANDO DIRETÓRIOS DO AUTOM8"
+        mkdir -p AutoM8/{logs,Recipes,Downloads}
+
+        # Salvando log de execução
+        echo "Instalado em " > AutoM8/logs/install.log
 
         install_desktop
     fi
@@ -168,7 +174,7 @@ install_desktop() {
     sudo snap install wonderwall
     sudo snap install gtk-theme-orchis
     sudo snap install gtk-common-themes
-    echo -e "\e[32mPacotes Instalados\e[0m"
+    echo -e "\e[32mPacotes Snap Instalados\e[0m"
 
     echo "ATUALIZANDO EDITOR DE TEXTO PADRÃO"
     sudo update-alternatives --install /usr/bin/editor editor /usr/bin/vim.basic 1
