@@ -62,7 +62,7 @@ install_autom8() {
         echo -e "\e[32mAtualização do sistema operacional finalizada.\e[0m"
 
         echo "INSTALANDO PACOTES BÁSICOS DO SO"
-        sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic
+        sudo apt install -y ntpdate vim net-tools curl wget links htop iotop openssh-server tmux dconf-cli dconf-editor linux-tools-generic rar unrar bzip2 tar unzip
         echo -e "\e[32mPacotes básicos instalados\e[0m"
 
         echo "CRIANDO DIRETÓRIOS DO AUTOM8"
@@ -87,12 +87,16 @@ install_desktop() {
     wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
-    echo "INSTANDO REPOSITÓRIO DOCKER"
+    echo "Instalando repositorio Docker"
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    echo "Instalando repositorio OpenVPN"
+    sudo curl -fsSL https://packages.openvpn.net/packages-repo.gpg -o /etc/apt/keyrings/openvpn.asc
+    echo "deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian $VERSION_CODENAME main" >>/etc/apt/sources.list.d/openvpn3.list
     sudo apt update
 
-    echo "INSTALANDO REPOSITÓRIO FLATPAK"
+    echo "Instalar repositorio Flatpak"
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     echo "INSTALANDO GOOGLE CHROME"
@@ -101,10 +105,6 @@ install_desktop() {
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -y chrome-gnome-shell
     echo -e "\e[32mPacotes Instalados\e[0m"
-
-    echo "INSTALANDO FERRAMENTAS DE COMPACTAÇÃO DE ARQUIVOS"
-    sudo apt install -y rar unrar bzip2 tar unzip
-    echo -e "\e[32mPacotes instalados\e[0m"
 
     echo "INSTALANDO PACOTES DE FILESYSTEMS"
     sudo apt install -y zfsutils-linux samba-common-bin ntfs-3g libfuse2t64
@@ -115,7 +115,7 @@ install_desktop() {
     echo -e "\e[32mPacotes instalados\e[0m"
 
     echo "INSTALANDO PACOTES DE SEGURANÇA E VPN"
-    sudo apt install -y openvpn
+    sudo apt install -y openvpn3
     echo -e "\e[32mPacotes Instalados\e[0m"
 
     echo "INSTALANDO FERRAMENTA DE BACKUP"
