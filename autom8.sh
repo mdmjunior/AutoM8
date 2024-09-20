@@ -15,7 +15,7 @@ check_env() {
     # Verifica usuário atual
     USERNM=$(whoami)
 
-    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo"$RELEASE 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
+    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo "$RELEASE != 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
         echo -e "\e[32mDISTRIBUIÇÃO:\e[0m $DISTRO"
         echo -e "\e[32mRELEASE:\e[0m $RELEASE"
         echo "No momento o AutoM8 suporta somente Ubuntu a partir da versão 24.04."
