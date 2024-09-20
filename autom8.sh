@@ -12,6 +12,7 @@ check_env() {
     # Verifica se a distribuição e release são compatíveis com o AutoM8, que foi desenvolvido em Ubuntu 24.04.
     DISTRO=$(lsb_release -is 2>/dev/null)
     RELEASE=$(lsb_release -rs 2>/dev/null)
+    VERSION_CODENAME=$(lsb_release -cs 2>/dev/null)
     # Verifica usuário atual
     USERNM=$(whoami)
 
@@ -89,18 +90,18 @@ install_desktop() {
 
     echo "Instalando repositorio Docker"
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $VERSION_CODENAME stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     echo "Instalando repositorio OpenVPN"
     sudo curl -fsSL https://packages.openvpn.net/packages-repo.gpg -o /etc/apt/keyrings/openvpn.asc
-    echo "deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian $VERSION_CODENAME main" >>/etc/apt/sources.list.d/openvpn3.list
+    echo "deb [signed-by=/etc/apt/keyrings/openvpn.asc] https://packages.openvpn.net/openvpn3/debian $VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/openvpn3.list > /dev/null
     sudo apt update
 
     echo "Instalar repositorio Flatpak"
     sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     echo "INSTALANDO GOOGLE CHROME"
-    cd Downloads/ || exit
+    cd AutoM8/Downloads/ || exit
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -y chrome-gnome-shell
