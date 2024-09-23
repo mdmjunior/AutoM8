@@ -200,7 +200,7 @@ install_desktop() {
 
     # Removendo pacotes não utilizados
     echo "REMOVENDO PACOTES DESNECESSÁRIOS"
-    sudo apt remove -y --purge apport apport-gtk rhythmbox
+    sudo apt remove -y --purge rhythmbox
     sudo apt autoremove -y
     sudo apt autoclean -y
     sudo systemctl daemon-reload
