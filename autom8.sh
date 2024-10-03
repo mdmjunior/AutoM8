@@ -24,15 +24,15 @@ check_env() {
     fi
 
     clear
-    echo "                                                        "
-    echo "   █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
-    echo "  ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
-    echo "  ███████║██║   ██║   ██║   ██║   ██║██╔████╔██║╚█████╔╝"
-    echo "  ██╔══██║██║   ██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██╗"
-    echo "  ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
-    echo "  ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
-    echo "                                                        "
-    echo "            Ubuntu Post-Installation Tool               "
+    echo "                                                       "
+    echo "  █████╗ ██╗   ██╗████████╗ ██████╗ ███╗   ███╗ █████╗ "
+    echo " ██╔══██╗██║   ██║╚══██╔══╝██╔═══██╗████╗ ████║██╔══██╗"
+    echo " ███████║██║   ██║   ██║   ██║   ██║██╔████╔██║╚█████╔╝"
+    echo " ██╔══██║██║   ██║   ██║   ██║   ██║██║╚██╔╝██║██╔══██╗"
+    echo " ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
+    echo " ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
+    echo "                                                       "
+    echo "           Ubuntu Post-Installation Tool               "
 
     # Verifica se o script já foi instalado, se sim, vai direto para a função recipes.
     LOG_FILE="AutoM8/logs/install.log"
@@ -175,6 +175,7 @@ install_desktop() {
     sudo snap install wonderwall
     sudo snap install gtk-theme-orchis
     sudo snap install gtk-common-themes
+    sudo snap install keepassxc
     echo -e "\e[32mPacotes Snap Instalados\e[0m"
 
     echo "ATUALIZANDO EDITOR DE TEXTO PADRÃO"
