@@ -70,7 +70,7 @@ install_autom8() {
         mkdir -p AutoM8/{logs,Recipes,Downloads}
 
         # Salvando log de execução
-        echo "Instalado em " > AutoM8/logs/install.log
+        echo "Instalado em " > $LOG_FILE
 
         install_desktop
     fi
