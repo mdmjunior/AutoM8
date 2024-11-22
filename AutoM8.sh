@@ -312,7 +312,6 @@ show_menu() {
 }
 
 main() {
-    check_env
     check_root_user
     while true; do
         print_banner
@@ -356,7 +355,6 @@ main() {
             msg 'Done!'
             ask_reboot
             ;;
-
         9)
             install_docker_desktop
             msg 'Done!'
@@ -407,4 +405,5 @@ auto() {
     ask_reboot
 }
 
+check_env
 main
