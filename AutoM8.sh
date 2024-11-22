@@ -406,3 +406,5 @@ auto() {
     cleanup
     ask_reboot
 }
+
+main
