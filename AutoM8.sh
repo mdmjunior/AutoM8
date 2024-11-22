@@ -56,9 +56,9 @@ check_root_user() {
 basic_settings() {
     DATETIMENOW=$(date +"%Y-%m-%d %H:%M:%S")
     echo -e "CURRENT DATE AND TIME: $DATETIMENOW\n"
-    read -r "IS IT CORRECT? (Y/N): " confirm
+    read -p "IS IT CORRECT? (Y/N): " confirm
     if [[ $confirm != "y" && $confirm != "Y" ]]; then
-        read -r "SELECT THE CORRECT TIMEZONE: " TIMEZONE
+        read -p "SELECT THE CORRECT TIMEZONE: " TIMEZONE
         sudo timedatectl set-timezone "$TIMEZONE"
         echo "TIMEZONE UPDATED: $TIMEZONE"
         echo -e "\e[32mOK - DONE\e[0m"
@@ -66,9 +66,9 @@ basic_settings() {
 
     HOSTNAME=$(hostname)
     echo -e "CURRENT HOSTNAME: $HOSTNAME\n"
-    read -r "IS IT CORRECT? (Y/N): " hostconfirm
+    read -p "IS IT CORRECT? (Y/N): " hostconfirm
     if [[ $hostconfirm == "n" || $hostconfirm == "N" ]]; then
-        read -r "TYPE THE CORRECT HOSTNAME: " HSNAME
+        read -p "TYPE THE CORRECT HOSTNAME: " HSNAME
         sudo hostnamectl set-hostname "$HSNAME"
         echo "HOSTNAME UPDATED: $HSNAME"
         echo -e "\e[32mOK - DONE\e[0m"
@@ -84,7 +84,7 @@ install_basic_packages() {
     sudo apt update &> /dev/null
     echo -e "\e[32mOK - DONE\e[0m"
     sleep 2
-    read -r "DO YOU WANT TO SEE AVAILABLE UPDATES? (Y/N): " upgradeask
+    read -p "DO YOU WANT TO SEE AVAILABLE UPDATES? (Y/N): " upgradeask
     if [[ $upgradeask == "Y" || $upgradeask == "y" ]]; then
         echo -e "UPGRADE LIST: \n"
         sudo apt list --upgradable
