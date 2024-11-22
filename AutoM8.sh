@@ -45,6 +45,14 @@ check_env() {
     fi
 }
 
+check_root_user() {
+    if [ "$(id -u)" != 0 ]; then
+        echo 'Please run the script as root!'
+        echo 'We need to do administrative tasks'
+        exit
+    fi
+}
+
 basic_settings() {
     DATETIMENOW=$(date +"%Y-%m-%d %H:%M:%S")
     echo -e "CURRENT DATE AND TIME: $DATETIMENOW\n"
@@ -243,11 +251,11 @@ install_browsers() {
     sudo snap remove --purge firefox
     wget -qO- https://packages.mozilla.org/apt/repo-signing-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/packages.mozilla.org.asc
     echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" |sudo tee /etc/apt/sources.list.d/mozilla.list
-    echo '
+    echo "
 Package: *
 Pin: origin packages.mozilla.org
 Pin-Priority: 1000
-' |sudo tee /etc/apt/preferences.d/mozilla
+" |sudo tee /etc/apt/preferences.d/mozilla
     sudo apt update
     sudo apt install firefox -y
     echo -e "\e[32mOK - DONE\e[0m"
@@ -275,7 +283,7 @@ error_msg() {
 ask_reboot() {
     echo 'Reboot now? (y/n)'
     while true; do
-        read -r choice
+        read -p choice
         if [[ "$choice" == 'y' || "$choice" == 'Y' ]]; then
             reboot
             exit 0
@@ -305,10 +313,11 @@ show_menu() {
 
 main() {
     check_env
+    check_root_user
     while true; do
         print_banner
         show_menu
-        read -r 'Enter your choice: ' choice
+        read -p 'Enter your choice: ' choice
         case $choice in
         1)
             auto
@@ -397,5 +406,3 @@ auto() {
     cleanup
     ask_reboot
 }
-
-(return 2> /dev/null) || main
