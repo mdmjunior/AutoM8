@@ -2,4 +2,4 @@
 AutoM8 - Ubuntu Post Install Tool
 
 
-Code still in development
+Code under development
