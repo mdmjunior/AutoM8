@@ -3,7 +3,7 @@
 ########################################################
 # AutoM8 - Ubuntu Post-Install Automation Tool         #
 # Author: Marcio Moreira junior                        #
-# email: mdmjunior@gmail.com                           #
+# email: iam@marciomoreirajunior.com.br                #
 # Version 1.0                                          #
 ########################################################
 
@@ -23,7 +23,6 @@ print_banner() {
     echo " ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
     echo "                                                       "
     echo "           Ubuntu Post-Installation Tool               "
-    echo "           https://www.oslabs.dev/autom8               "
 
 }
 
@@ -46,9 +45,8 @@ check_env() {
 }
 
 check_root_user() {
-    if [ "$(id -u)" != 0 ]; then
-        echo 'Please run the script as root!'
-        echo 'We need to do administrative tasks'
+    if [ "$(id -u)" == 0 ]; then
+        echo 'Please run the script as your current user!'
         exit
     fi
 }
@@ -170,7 +168,7 @@ install_pack_managers() {
 
 install_backup_tools() {
     echo "INSTALLING BACKUP TOOLS"
-    sudo apt install -y timeshift extundelete
+    sudo apt install -y extundelete
     echo -e "\e[32mOK - DONE\e[0m"
 }
 
@@ -221,6 +219,10 @@ install_dev_tools() {
 
     echo "INSTALLING AUTOMATION TOOLS"
     sudo apt install -y ansible ansible-lint terraform packer vagrant
+    echo -e "\e[32mOK - DONE\e[0m"
+
+    echo "INSTALLING NODE"
+    sudo apt install nodejs npm -y
     echo -e "\e[32mOK - DONE\e[0m"
 }
 
