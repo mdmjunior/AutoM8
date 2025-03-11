@@ -289,3 +289,23 @@ home_configure() {
     sleep 1
     clear
 }
+
+
+main() {
+    print_banner
+    check_user
+    check_conn
+    check_env
+    update_os
+    install_basic
+    install_pack_manager
+    add_extra_repo
+    install_browsers
+    install_addons_fonts
+    install_sysadmin
+    install_dev_tools
+    install_virtual
+    install_deskapps
+    home_configure
+    exit
+}
