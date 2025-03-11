@@ -71,7 +71,7 @@ check_env() {
 check_conn() {
     # Check internet connection
     echo "Checking Internet connection."
-    if ! ping -c 3 google.com; then
+    if ! ping -c 3 google.com ; then
         echo "You are offline, please check your internet connection."
         exit
     fi
@@ -80,8 +80,8 @@ check_conn() {
 update_os() {
     echo "AutoM8 will update repositories and installed packages."
     sudo apt update
-    sudo apt upgrade -y
-    sudo apt autoremove -y
+    sudo apt upgrade -y 
+    sudo apt autoremove -y 
     echo "System Updated"
     echo "OS Last Update: $(date)" >> $LOGFILE
     sleep 1
@@ -89,7 +89,7 @@ update_os() {
 
 install_basic() {
     echo "Installing Basic Packages."
-    sudo apt install -y vim net-tools git jq links rsync curl gpg wget ntpdate openssh-server tmux dconf-cli dconf-editor linux-tools-generic sshpass rar unrar bzip2 tar unzip zfsutils-linux samba-common-bin ntfs-3g libfuse2t64 neofetch figlet
+    sudo apt install -y vim net-tools git jq links rsync curl gpg wget ntpdate openssh-server tmux dconf-cli dconf-editor linux-tools-generic sshpass rar unrar bzip2 tar unzip zfsutils-linux samba-common-bin ntfs-3g libfuse2t64 neofetch figlet 
     echo "Done"
     echo "Basic Packages Installed"
     echo "Basic Packages Install: $(date)" >> $LOGFILE
@@ -98,7 +98,7 @@ install_basic() {
 
 install_pack_manager() {
     echo "Installing Package Managers."
-    sudo apt install -y gnome-software-plugin-flatpak flatpak synaptic snapd
+    sudo apt install -y gnome-software-plugin-flatpak flatpak synaptic snapd 
     echo "Done"
     echo "Package Managers Installed"
     echo "Package Managers Install: $(date)" >> $LOGFILE
@@ -108,23 +108,19 @@ install_pack_manager() {
 add_extra_repo() {
     echo "Adding Extra Repositories."
     echo "-- Hashicorp"
-    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg &> /dev/null
-    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $CODENAME main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg 
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $CODENAME main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 
     echo "Done"
 
     echo "-- Docker"
-    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc &> /dev/null
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $CODENAME stable" | sudo tee /etc/apt/sources.list.d/docker.list
-    echo "Done"
-
-    echo "-- Flatpak"
-    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc 
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $CODENAME stable" | sudo tee /etc/apt/sources.list.d/docker.list 
     echo "Done"
 
     echo "-- Microsoft"
-    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg &> /dev/null
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg
     echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list
-    echo "deb [arch=amd64] signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge.list
+    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" | sudo tee /etc/apt/sources.list.d/microsoft-edge.list
     echo "Done"
 
     echo "-- Updating New Repositories"
@@ -140,7 +136,7 @@ install_browsers() {
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     sudo dpkg -i google-chrome-stable_current_amd64.deb
     sudo apt install -y gnome-chrome-shell
-    rm google-chrome-stable_current_amd64.deb
+    rm google-chrome-stable_current_amd64.deb 
     echo "Done"
 
     echo "-- Install Microsoft Edge"
@@ -154,7 +150,7 @@ install_browsers() {
 
 install_addons_fonts() {
     echo "Installing Addons and Fonts"
-    sudo apt install -y gnome-shell-extension-manager gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code
+    sudo apt install -y gnome-shell-extension-manager gnome-shell-extension-prefs gnome-software ubuntu-restricted-extras gnome-shell-extension-ubuntu-tiling-assistant gnome-backgrounds gnome-tweaks fonts-firacode fonts-roboto fonts-cascadia-code
     echo "Done"
 
     echo "-- Installing Gnome Extensions"
@@ -186,7 +182,7 @@ install_addons_fonts() {
 
 install_sysadmin() {
     echo "Installing System Administrator Tools"
-    sudo apt install -y iproute2 ethtool nmap zenmap tcpdump wireshark tshark netcat-traditional traceroute iperf3 iptraf-ng iftop iotop htop sysstat lsof strace pcp mtr
+    sudo apt install -y iproute2 ethtool nmap zenmap tcpdump wireshark tshark netcat-traditional traceroute iptraf-ng iftop iotop htop sysstat lsof strace pcp mtr
     echo "Done"
     echo "System Administrator Tools Installed"
     echo "System Administrator Tools Install: $(date)" >> $LOGFILE
@@ -235,7 +231,7 @@ install_virtual() {
     echo "Done"
 
     echo "-- Installing Vagrant and Packer"
-    sudo apt install -y vagrant packer &> /dev/null
+    sudo apt install -y vagrant packer
     echo "Done"
 
 
@@ -292,8 +288,8 @@ home_configure() {
     check_env
     update_os
     install_basic
-    add_extra_repo
     install_pack_manager
+    add_extra_repo
     install_browsers
     install_addons_fonts
     install_sysadmin
