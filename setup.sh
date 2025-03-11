@@ -287,11 +287,10 @@ home_configure() {
     echo "Home Config done"
     echo "Last Home Config: $(date)" >> $LOGFILE
     sleep 1
-    clear
+    exit
 }
 
 
-main() {
     print_banner
     check_user
     check_conn
@@ -307,5 +306,3 @@ main() {
     install_virtual
     install_deskapps
     home_configure
-    exit
-}
