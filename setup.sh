@@ -80,8 +80,8 @@ check_conn() {
 update_os() {
     echo "AutoM8 will update repositories and installed packages."
     sudo apt update
-    sudo apt upgrade -y 
-    sudo apt autoremove -y 
+    sudo apt upgrade -y
+    sudo apt autoremove -y
     echo "System Updated"
     echo "OS Last Update: $(date)" >> $LOGFILE
     sleep 1
