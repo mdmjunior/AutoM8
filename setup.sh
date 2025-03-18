@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
-
-# This setup script will install all the necessary dependencies for the tool to run
-# Feel free to modify it to suit your needs
-
 ########################################################
-# AutoM8 - Ubuntu Post-Install Automation Tool         #
+# AutoM8 - Ubuntu Linux Setup Tool                     #
 # Author: Marcio Moreira junior                        #
 # email: iam@marciomoreirajunior.com.br                #
 # Version 1.0                                          #
@@ -30,8 +26,7 @@ print_banner() {
     echo " ██║  ██║╚██████╔╝   ██║   ╚██████╔╝██║ ╚═╝ ██║╚█████╔╝"
     echo " ╚═╝  ╚═╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝     ╚═╝ ╚════╝ "
     echo "                                                       "
-    echo "           Ubuntu Post-Installation Tool               "
-
+    echo "               Ubuntu Linux Setup Tool                 "
 }
 
 check_user() {
