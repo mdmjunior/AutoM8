@@ -16,3 +16,25 @@ The project is still under development, but I will share some notes, workflow an
 
 AutoM8 is the ultimate tool for linux users to manage their Ubuntu Station. It provides a huge set of commands to automate the installation of
 software on your computer.
+
+## Workflow
+
+Not done yet.
+
+## Ideas
+
+- Automate the installation of everything
+- Increase productivity
+- Easy on-board of new DevOps or Developers
+- Unify all the tools in just one app
+- Uninstall not needed software on Ubuntu
+- Keep track of what was installed
+
+**The list bellow contains the task I want to automate:**
+
+- Create new users and groups
+- Crate ssh and gpg keys for users
+- Change bash aliases and prompt
+- Install other shells than bash
+- Change timezone
+- Change hostname
