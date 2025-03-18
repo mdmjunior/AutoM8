@@ -1,6 +1,6 @@
 <div align="center">
 
-![AutoM8](AutoM8.png)
+![AutoM8](data/images/AutoM8.png)
 
 # AutoM8 - Linux Ubuntu Setup Tool
 
@@ -11,3 +11,8 @@ several operating systems. I started it at first, to improve my scripting skills
 this is becoming bigger than I supposed.
 
 The project is still under development, but I will share some notes, workflow and the Ideas for future improvements.
+
+## Introduction
+
+AutoM8 is the ultimate tool for linux users to manage their Ubuntu Station. It provides a huge set of commands to automate the installation of
+software on your computer.
