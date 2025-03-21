@@ -61,6 +61,7 @@ printBanner() {
 }
 
 checkEnvironment() {
+    printBanner
     # Check if running the tool as root.
     echo -e "${LIGHTGREEN}AutoM8 is Checking environment...${NC}"
     if [ "EUID" == 0 ]; then
@@ -99,9 +100,9 @@ checkEnvironment() {
 }
 
 main() {
-    checkEnvironment
-    # Install prerequisites and create AutoM8 Structure
     clear
+    printBanner
+    # Install prerequisites and create AutoM8 Structure
     echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
     echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}\n"
     sudo export DEBIAN_FRONTEND=noninteractive
