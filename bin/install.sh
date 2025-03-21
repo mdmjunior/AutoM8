@@ -22,6 +22,7 @@ LOG_DIR="$INSTALL_DIR/log"
 LOG_FILE="$INSTALL_DIR/$LOG_DIR/autom8.log"
 LOG_INSTALL="$INSTALL_DIR/$LOG_DIR/install.log"
 LOG_APPS="$INSTALL_DIR/$LOG_DIR/apps.log"
+DEBIAN_FRONTEND=noninteractive
 
 # ------------------------------------------------------
 # Colors
@@ -124,7 +125,6 @@ main() {
     # Install prerequisites and create AutoM8 Structure
     echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
     echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}"
-    export DEBIAN_FRONTEND=noninteractive
     sudo apt update -y &> /dev/null
     sudo apt upgrade -y &> /dev/null
     echo -e "${LIGHTGREEN}Operating System updated.${NC}"
@@ -138,7 +138,7 @@ main() {
     echo -e "${LIGHTGREEN}Installing AutoM8...${NC}"
     echo -e "${LIGHTGREEN}AutoM8 will be installed on $INSTALL_DIR ${NC}"
     git clone https://github.com/mdmjunior/AutoM8.git --depth=1 && cd AutoM8
-    
+
     # Creating Directories
     sudo mkdir -p $INSTALL_DIR
     sudo mkdir -p $INSTALL_DIR/$LOG_DIR
