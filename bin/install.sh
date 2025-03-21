@@ -99,6 +99,7 @@ checkEnvironment() {
 }
 
 main() {
+    checkEnvironment
     # Install prerequisites and create AutoM8 Structure
     clear
     echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
@@ -144,3 +145,5 @@ installLog() {
     echo "Username: $USER" >> $LOG_FILE
     echo "------------------------------------" >> $LOG_FILE
 }
+
+checkEnvironment
