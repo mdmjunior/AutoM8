@@ -124,7 +124,7 @@ main() {
     # Install prerequisites and create AutoM8 Structure
     echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
     echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}"
-    sudo export DEBIAN_FRONTEND=noninteractive
+    export DEBIAN_FRONTEND=noninteractive
     sudo apt update -y &> /dev/null
     sudo apt upgrade -y &> /dev/null
     echo -e "${LIGHTGREEN}Operating System updated.${NC}"
