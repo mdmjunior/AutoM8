@@ -1,0 +1,7 @@
+APP: Name of the App
+URL: URL of the App
+ICON: Icon of the App
+APP_REPO: Repository of the App
+APP_REPO_KEY: Repository Key of the App
+APP_PROFILE: Profile of the App
+APP_VERSION: Version of the App

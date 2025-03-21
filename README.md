@@ -23,7 +23,7 @@ Not done yet.
 
 ## Ideas
 
-- Automate the installation of everything
+- Automate the installation of almost everything
 - Increase productivity
 - Easy on-board of new DevOps or Developers
 - Unify all the tools in just one app
@@ -32,9 +32,11 @@ Not done yet.
 
 **The list bellow contains the task I want to automate:**
 
-- Create new users and groups
-- Crate ssh and gpg keys for users
+- Create ssh and gpg keys for users (and manage it)
 - Change bash aliases and prompt
-- Install other shells than bash
-- Change timezone
-- Change hostname
+- Install other shells than bash and customize it
+- Sugest bash aliases due to repetition of commands executed
+- Install apps based on user's profile
+- Remove old and orphan packages
+- Clean up temporary and cache files
+- Sugest backup folders and automate this task
