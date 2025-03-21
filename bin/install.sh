@@ -60,75 +60,6 @@ printBanner() {
     echo -e ${NC}
 }
 
-checkEnvironment() {
-    printBanner
-    # Check if running the tool as root.
-    echo -e "${LIGHTGREEN}AutoM8 is Checking environment...${NC}"
-    if [ "EUID" == 0 ]; then
-        echo -e "${RED}Running AutoM8 as Root, please use your own user. Exiting...${NC}"
-        exit 1
-    else
-        echo -e "${LIGHTGREEN}Running AutoM8 as User: $USER${NC}"
-        sleep 1
-    fi
-
-    # Check Internet Connection
-    if ! ping -c 3 google.com &>/dev/null; then
-        echo -e "${RED}No Internet Connection. Exiting...${NC}"
-        exit 1
-    fi
-
-    # Check if the system is Ubuntu Noble
-    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo "$RELEASE != 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
-        echo -e "${RED}AutoM8 only works on Ubuntu 24.04. Exiting...${NC}"
-        exit 1
-    fi
-
-    # Check if AutoM8 is already installed
-    if [ -f $LOG_INSTALL ]; then
-        echo -e "${RED}AutoM8 is already installed. Exiting...${NC}"
-        exit 1
-    else
-        echo -e "${LIGHTGREEN}AutoM8 will be installed on $INSTALL_DIR ${NC}"
-        # Creating Directories
-        sudo mkdir -p $INSTALL_DIR
-        sudo mkdir -p $INSTALL_DIR/$LOG_DIR
-        sudo chown -R $USER:$USER $INSTALL_DIR
-        sleep 1
-        main
-    fi
-}
-
-main() {
-    clear
-    printBanner
-    # Install prerequisites and create AutoM8 Structure
-    echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
-    echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}\n"
-    sudo export DEBIAN_FRONTEND=noninteractive
-    sudo apt update -y &>/dev/null
-    sudo apt upgrade -y &>/dev/null
-    echo -e "${LIGHTGREEN}Operating System updated.${NC}"
-    sleep 1
-
-    echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
-    sudo apt install -y bzip2 git curl wget unzip net-tools openssh-server rsync zip vim tar &>/dev/null
-    echo -e "${LIGHTGREEN}Prerequisites installed.${NC}"
-    sleep 1
-
-    echo -e "${LIGHTGREEN}Installing AutoM8...${NC}"
-    git clone https://github.com/mdmjunior/AutoM8.git --depth=1 && cd AutoM8
-    mv * $INSTALL_DIR
-    sudo chmod +x $INSTALL_DIR/bin/*
-
-    # Creating Log Files
-    createLog
-    installLog
-
-    echo -e "${LIGHTGREEN}AutoM8 installed. Just run $INSTALL_DIR/bin/autom8.sh ${NC}"
-    sleep 1
-}
-
 createLog() {
     sudo touch $LOG_FILE
     sudo touch $LOG_INSTALL
@@ -147,4 +78,82 @@ installLog() {
     echo "------------------------------------" >> $LOG_FILE
 }
 
-checkEnvironment
+checkUser() {
+    # Check if running the tool as root.
+    echo -e "${LIGHTGREEN}AutoM8 is Checking environment...${NC}"
+    echo -e ${NC}
+    if [ "$(id -u)" == 0 ]; then
+        echo -e "${RED}Running AutoM8 as Root, please use your own user. Exiting...${NC}"
+        exit 1
+    fi
+}
+
+checkPing() {
+    # Check Internet Connection
+    if ! ping -c 3 google.com &> /dev/null; then
+        echo -e "${RED}No Internet Connection. Exiting...${NC}"
+        exit 1
+    fi
+}
+
+checkDistro() {
+    # Check if the system is Ubuntu Noble
+    if [ "$DISTRO" != "Ubuntu" ] || [[ $(echo "$RELEASE != 24.04" | awk '{print ($1 >= $2)}') -eq 0 ]]; then
+        echo -e "${RED}AutoM8 only works on Ubuntu 24.04. Exiting...${NC}"
+        exit 1
+    fi
+}
+
+checkInstall() {
+    # Check if AutoM8 is already installed
+    if [ -f $LOG_INSTALL ]; then
+        echo -e "${RED}AutoM8 is already installed. Exiting...${NC}"
+        exit 1
+    fi
+}
+
+main() {
+    clear
+    printBanner
+    sleep 1
+    checkUser
+    checkPing
+    checkDistro
+    checkInstall
+
+    # Install prerequisites and create AutoM8 Structure
+    echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
+    echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}"
+    sudo export DEBIAN_FRONTEND=noninteractive
+    sudo apt update -y &> /dev/null
+    sudo apt upgrade -y &> /dev/null
+    echo -e "${LIGHTGREEN}Operating System updated.${NC}"
+    sleep 1
+
+    echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
+    sudo apt install -y bzip2 git curl wget unzip net-tools openssh-server rsync zip vim tar &> /dev/null
+    echo -e "${LIGHTGREEN}Prerequisites installed.${NC}"
+    sleep 1
+
+    echo -e "${LIGHTGREEN}Installing AutoM8...${NC}"
+    echo -e "${LIGHTGREEN}AutoM8 will be installed on $INSTALL_DIR ${NC}"
+    git clone https://github.com/mdmjunior/AutoM8.git --depth=1 && cd AutoM8
+    
+    # Creating Directories
+    sudo mkdir -p $INSTALL_DIR
+    sudo mkdir -p $INSTALL_DIR/$LOG_DIR
+    sudo chown -R $USER:$USER $INSTALL_DIR
+    sleep 1
+    mv * $INSTALL_DIR/
+    sudo chmod +x $INSTALL_DIR/bin/*
+
+    # Creating Log Files
+    createLog
+    installLog
+
+    echo -e "${LIGHTGREEN}AutoM8 installed. Just run $INSTALL_DIR/bin/autom8.sh ${NC}"
+    sleep 1
+    exit 0
+}
+
+main
