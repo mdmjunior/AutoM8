@@ -17,7 +17,11 @@ ARCH=$(uname -m)
 USER=$(whoami)
 HOME=$(eval echo ~$USER)
 INSTALL_DIR="/opt/AutoM8"
-LOG_FILE="$INSTALL_DIR/logs/AutoM8.log"
+APPS_DIR="$INSTALL_DIR/apps"
+LOG_DIR="$INSTALL_DIR/log"
+LOG_FILE="$INSTALL_DIR/$LOG_DIR/autom8.log"
+LOG_INSTALL="$INSTALL_DIR/$LOG_DIR/install.log"
+LOG_APPS="$INSTALL_DIR/$LOG_DIR/apps.log"
 
 # ------------------------------------------------------
 # Colors
@@ -59,15 +63,17 @@ printBanner() {
 checkEnvironment() {
     # Check if running the tool as root.
     echo -e "${LIGHTGREEN}AutoM8 is Checking environment...${NC}"
-
     if [ "EUID" == 0 ]; then
         echo -e "${RED}Running AutoM8 as Root, please use your own user. Exiting...${NC}"
         exit 1
+    else
+        echo -e "${LIGHTGREEN}Running AutoM8 as User: $USER${NC}"
+        sleep 1
     fi
 
-    # Check if AutoM8 is already installed
-    if [ -f $INSTALL_DIR/$LOG_FILE ]; then
-        echo -e "${RED}AutoM8 is already installed. Exiting...${NC}"
+    # Check Internet Connection
+    if ! ping -c 3 google.com &>/dev/null; then
+        echo -e "${RED}No Internet Connection. Exiting...${NC}"
         exit 1
     fi
 
@@ -77,16 +83,64 @@ checkEnvironment() {
         exit 1
     fi
 
-    # Check Internet Connection
-    if ! ping -c 3 google.com &>/dev/null; then
-        echo -e "${RED}No Internet Connection. Exiting...${NC}"
+    # Check if AutoM8 is already installed
+    if [ -f $LOG_INSTALL ]; then
+        echo -e "${RED}AutoM8 is already installed. Exiting...${NC}"
         exit 1
+    else
+        echo -e "${LIGHTGREEN}AutoM8 will be installed on $INSTALL_DIR ${NC}"
+        # Creating Directories
+        sudo mkdir -p $INSTALL_DIR
+        sudo mkdir -p $INSTALL_DIR/$LOG_DIR
+        sudo chown -R $USER:$USER $INSTALL_DIR
+        sleep 1
+        main
     fi
 }
 
-installPrerequisites() {
-    echo -e "${LIGHTGREEN}AutoM8 is Installing Prerequisites...${NC}"
+main() {
+    # Install prerequisites and create AutoM8 Structure
+    clear
+    echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
+    echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}\n"
+    sudo export DEBIAN_FRONTEND=noninteractive
+    sudo apt update -y &>/dev/null
+    sudo apt upgrade -y &>/dev/null
+    echo -e "${LIGHTGREEN}Operating System updated.${NC}"
+    sleep 1
 
-    sudo apt update -y
-    sudo apt install -y vim curl wget git unzip zip jq
+    echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
+    sudo apt install -y bzip2 git curl wget unzip net-tools openssh-server rsync zip vim tar &>/dev/null
+    echo -e "${LIGHTGREEN}Prerequisites installed.${NC}"
+    sleep 1
+
+    echo -e "${LIGHTGREEN}Installing AutoM8...${NC}"
+    git clone https://github.com/mdmjunior/AutoM8.git --depth=1 && cd AutoM8
+    mv * $INSTALL_DIR
+    sudo chmod +x $INSTALL_DIR/bin/*
+
+    # Creating Log Files
+    createLog
+    installLog
+
+    echo -e "${LIGHTGREEN}AutoM8 installed. Just run $INSTALL_DIR/bin/autom8.sh ${NC}"
+    sleep 1
+}
+
+createLog() {
+    sudo touch $LOG_FILE
+    sudo touch $LOG_INSTALL
+    sudo touch $LOG_APPS
+    sudo chown -R $USER:$USER $INSTALL_DIR
+}
+
+installLog() {
+    echo "AutoM8 Installation Log" >> $LOG_FILE
+    echo "------------------------------------" >> $LOG_FILE
+    echo "Install Date: $(date)" >> $LOG_FILE
+    echo "Distribution: $DISTRO" >> $LOG_FILE
+    echo "Release: $RELEASE" >> $LOG_FILE
+    echo "Codename: $CODENAME" >> $LOG_FILE
+    echo "Username: $USER" >> $LOG_FILE
+    echo "------------------------------------" >> $LOG_FILE
 }
