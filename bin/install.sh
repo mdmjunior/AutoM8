@@ -125,9 +125,16 @@ main() {
     # Install prerequisites and create AutoM8 Structure
     echo -e "${LIGHTGREEN}AutoM8 will now update the current repositories and installed packages.${NC}"
     echo -e "${LIGHTGREEN}This may take a while, please wait...${NC}"
-    sudo apt update -y &> /dev/null
-    sudo apt upgrade -y &> /dev/null
-    echo -e "${LIGHTGREEN}Operating System updated.${NC}"
+    (sudo apt update -y &> /dev/null && sudo apt upgrade -y &> /dev/null) &
+    PID=$!
+    spin='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+    i=0
+    while kill -0 $PID 2> /dev/null; do
+        i=$(( (i+1) % ${#spin} ))
+        printf "\r${LIGHTGREEN}Updating Installed Packages...%s${NC}" "${spin:$i:1}"
+        sleep 0.1
+    done
+    echo -e "\r${LIGHTGREEN}Operating System updated.${NC}"
     sleep 1
 
     echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
