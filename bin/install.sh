@@ -131,20 +131,20 @@ main() {
     i=0
     while kill -0 $PID 2> /dev/null; do
         i=$(( (i+1) % ${#spin} ))
-        printf "\r${LIGHTGREEN}Updating Installed Packages...%s${NC}" "${spin:$i:1}"
+        printf "${LIGHTGREEN}Updating Installed Packages...%s${NC}" "${spin:$i:1}\n"
         sleep 0.1
     done
-    echo -e "\r${LIGHTGREEN}Operating System updated.${NC}"
+    echo -e "${LIGHTGREEN}Operating System updated.${NC}"
     sleep 1
 
     echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
-    sudo apt install -y bzip2 git curl wget unzip net-tools gcc make python3 python3-pip openssh-server rsync zip vim tar &> /dev/null
+    sudo apt install -y bzip2 git curl wget unzip net-tools gcc make perl python3 python3-pip openssh-server rsync zip vim tar &> /dev/null
     echo -e "${LIGHTGREEN}Prerequisites installed.${NC}"
     sleep 1
 
     echo -e "${LIGHTGREEN}Installing AutoM8...${NC}"
     echo -e "${LIGHTGREEN}AutoM8 will be installed on $INSTALL_DIR ${NC}"
-    git clone https://github.com/mdmjunior/AutoM8.git --depth=1 && cd AutoM8
+    git clone https://github.com/mdmjunior/AutoM8.git --depth=1 &> /dev/null && cd AutoM8
 
     # Creating Directories
     sudo mkdir -p $INSTALL_DIR
