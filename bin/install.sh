@@ -138,7 +138,7 @@ main() {
     sleep 1
 
     echo -e "${LIGHTGREEN}Installing prerequisites...${NC}"
-    sudo apt install -y bzip2 git curl wget unzip net-tools openssh-server rsync zip vim tar &> /dev/null
+    sudo apt install -y bzip2 git curl wget unzip net-tools gcc make python3 python3-pip openssh-server rsync zip vim tar &> /dev/null
     echo -e "${LIGHTGREEN}Prerequisites installed.${NC}"
     sleep 1
 
