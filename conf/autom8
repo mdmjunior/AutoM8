@@ -1,6 +1,4 @@
-#################################
-## AutoM8 Configuration File   ##
-#################################
+#!/usr/bin/env bash
 
 # ------------------------------------------------------
 # AutoM8 Variables
@@ -12,10 +10,15 @@ ARCH=$(uname -m)
 USER=$(whoami)
 HOME=$(eval echo ~$USER)
 INSTALL_DIR="/opt/AutoM8"
-LOG_FILE="$INSTALL_DIR/logs/AutoM8.log"
+APPS_DIR="$INSTALL_DIR/apps"
+LOG_DIR="$INSTALL_DIR/log"
+LOG_FILE="$INSTALL_DIR/$LOG_DIR/autom8.log"
+LOG_INSTALL="$INSTALL_DIR/$LOG_DIR/install.log"
+LOG_APPS="$INSTALL_DIR/$LOG_DIR/apps.log"
+DEBIAN_FRONTEND=noninteractive
 
 # ------------------------------------------------------
-# Colors for output
+# Colors
 # ------------------------------------------------------
 RED='\033[0;31m'
 GREEN='\033[0;32m'

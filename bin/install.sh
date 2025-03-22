@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ########################################################
-# AutoM8 - Ubuntu Linux Setup Tool                     #
+# AutoM8 - Linux Ubuntu Setup Tool                     #
 # Author: Marcio Moreira junior                        #
 # email: iam@marciomoreirajunior.com.br                #
 # Version 1.0                                          #
