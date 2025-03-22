@@ -8,8 +8,6 @@ flatpak
 fonts-cascadia-code
 fonts-firacode
 fonts-roboto
-gcc
-make
 gnome-backgrounds
 gnome-shell-extension-manager
 gnome-shell-extension-ubuntu-tiling-assistant
