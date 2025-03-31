@@ -25,7 +25,7 @@ LOG_APPS="$INSTALL_DIR/$LOG_DIR/apps.log"
 DEBIAN_FRONTEND=noninteractive
 
 # ------------------------------------------------------
-# Colors
+# Text Output Colors
 # ------------------------------------------------------
 RED='\033[0;31m'
 GREEN='\033[0;32m'
